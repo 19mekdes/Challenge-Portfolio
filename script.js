@@ -1,6 +1,4 @@
-// ============================================
-// PROJECT DATA - Using Your Local Images
-// ============================================
+
 const projects = [
     {
         id: 1,
@@ -46,9 +44,7 @@ const projects = [
     }
 ];
 
-// ============================================
-// RENDER PROJECTS - Fixed Fallback
-// ============================================
+
 function renderProjects() {
     const grid = document.getElementById('projectGrid');
     
@@ -76,9 +72,7 @@ function renderProjects() {
     `).join('');
 }
 
-// ============================================
-// TYPING EFFECT - Multiple Text
-// ============================================
+
 const typingText = document.querySelector('.multiple-text');
 const roles = ['Web Developer', 'Backend Developer', 'Full Stack Developer'];
 let roleIndex = 0;
