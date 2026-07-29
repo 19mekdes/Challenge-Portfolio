@@ -108,7 +108,7 @@ function typeEffect() {
 function toggleTheme() {
     const body = document.body;
     const themeToggle = document.querySelector('.theme-toggle i');
-    
+
     if (body.getAttribute('data-theme') === 'dark') {
         body.removeAttribute('data-theme');
         if (themeToggle) {
@@ -128,7 +128,7 @@ function toggleTheme() {
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     const themeToggle = document.querySelector('.theme-toggle i');
-    
+
     if (savedTheme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
         if (themeToggle) {
