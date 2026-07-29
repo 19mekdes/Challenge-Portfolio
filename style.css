@@ -1,4 +1,4 @@
-/* ===== RESET & BASE ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -167,14 +167,14 @@ body {
 }
 
 .home-image {
-    flex-shrink: 0;  /* Prevents image from shrinking */
+    flex-shrink: 0;  /
 }
 
 .home-image img {
-    width: 350px;          /* ← FIXED: Use px not % */
-    height: 350px;         /* ← FIXED: Use px not % */
-    border-radius: 50%;    /* ← Makes it circular */
-    object-fit: cover;     /* ← Crops image nicely */
+    width: 350px;          
+    height: 350px;         
+    border-radius: 50%;    
+    object-fit: cover;     
     border: 3px solid #000;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }

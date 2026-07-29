@@ -11,7 +11,7 @@ const projects = [
         id: 2,
         title: "CineMatch",
         description: "A movie recommendation system that suggests films based on user preferences and viewing history.",
-        tags: ["Next.js", "Tailwind CSS", "TypeScript","nest js","postgreSQL"],
+        tags: ["Next.js", "Tailwind CSS", "TypeScript", "nest js", "postgreSQL"],
         image: "image/project2.jpg"
     },
     {
@@ -39,7 +39,7 @@ const projects = [
         id: 6,
         title: "Book Review",
         description: "A book review platform where users can rate, review, and discover new books across different genres.",
-        tags: ["React", "Tailwind CSS", "TypeScript", "Node.js","postgreSQL"],
+        tags: ["React", "Tailwind CSS", "TypeScript", "Node.js", "postgreSQL"],
         image: "image/project6.jpg"
     }
 ];
@@ -47,7 +47,7 @@ const projects = [
 
 function renderProjects() {
     const grid = document.getElementById('projectGrid');
-    
+
     grid.innerHTML = projects.map(project => `
         <div class="project-card">
             <img 
@@ -81,7 +81,7 @@ let isDeleting = false;
 
 function typeEffect() {
     const currentRole = roles[roleIndex];
-    
+
     if (isDeleting) {
         typingText.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
@@ -104,26 +104,20 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
-// ============================================
-// MOBILE MENU TOGGLE
-// ============================================
+
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
 
-// ============================================
-// CONTACT FORM HANDLER
-// ============================================
+
 function handleSubmit(event) {
     event.preventDefault();
     alert('Thank you for your message! I will get back to you soon.');
     event.target.reset();
 }
 
-// ============================================
-// SMOOTH SCROLL FOR NAV LINKS
-// ============================================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -137,15 +131,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============================================
-// SKILL BAR ANIMATION ON SCROLL
-// ============================================
+
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
         const position = bar.getBoundingClientRect().top;
         const screenHeight = window.innerHeight;
-        
+
         if (position < screenHeight) {
             const width = bar.style.width;
             bar.style.width = '0%';
@@ -156,10 +148,8 @@ function animateSkillBars() {
     });
 }
 
-// ============================================
-// INITIALIZE
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function () {
     renderProjects();
     typeEffect();
     setTimeout(animateSkillBars, 500);
