@@ -6,28 +6,28 @@ const projects = [
         id: 1,
         title: "Dental Clinic Management System",
         description: "A comprehensive dental clinic management system for appointment scheduling, patient records, and treatment tracking.",
-        tags: ["HTML", "CSS", "JavaScript"],
+        tags: ["React", "CSS", "JavaScript"],
         image: "image/project1.jpg"
     },
     {
         id: 2,
         title: "CineMatch",
         description: "A movie recommendation system that suggests films based on user preferences and viewing history.",
-        tags: ["JavaScript", "API", "CSS"],
+        tags: ["Next.js", "Tailwind CSS", "TypeScript","nest js","postgreSQL"],
         image: "image/project2.jpg"
     },
     {
         id: 3,
         title: "Cake House",
         description: "An e-commerce platform for ordering custom cakes, pastries, and baked goods with online payment integration.",
-        tags: ["React", "CSS", "Firebase"],
+        tags: ["React", "Tailwind CSS", "TypeScript"],
         image: "image/project3.jpg"
     },
     {
         id: 4,
         title: "AlphaLine Engineering Website",
         description: "A professional corporate website for an engineering company showcasing services, projects, and client portfolios.",
-        tags: ["JavaScript", "HTML", "CSS"],
+        tags: ["React", "Taliwind css", "Typescript"],
         image: "image/project4.jpg"
     },
     {
