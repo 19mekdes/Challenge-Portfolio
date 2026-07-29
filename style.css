@@ -473,11 +473,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* ============================================
-   FULLY RESPONSIVE - FIXED & IMPROVED
-   ============================================ */
 
-/* ===== TABLETS & SMALL LAPTOPS ===== */
 @media (max-width: 992px) {
     .home-text h1 {
         font-size: 3rem;
