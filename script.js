@@ -11,7 +11,7 @@ const projects = [
         id: 2,
         title: "CineMatch",
         description: "A movie recommendation system that suggests films based on user preferences and viewing history.",
-        tags: ["Next.js", "Tailwind CSS", "TypeScript", "nest js", "postgreSQL"],
+        tags: ["Next.js", "Tailwind CSS", "TypeScript", "Nest.js", "PostgreSQL"],
         image: "image/project2.jpg"
     },
     {
@@ -25,21 +25,21 @@ const projects = [
         id: 4,
         title: "AlphaLine Engineering Website",
         description: "A professional corporate website for an engineering company showcasing services, projects, and client portfolios.",
-        tags: ["React", "Taliwind css", "Typescript"],
+        tags: ["React", "Tailwind CSS", "TypeScript"],
         image: "image/project4.jpg"
     },
     {
         id: 5,
         title: "Product Catalog",
         description: "An interactive product catalog with search, filter, and sorting features for easy product discovery.",
-        tags: ["React", "Taliwind css", "Typescript"],
+        tags: ["React", "Tailwind CSS", "TypeScript"],
         image: "image/project5.jpg"
     },
     {
         id: 6,
         title: "Book Review",
         description: "A book review platform where users can rate, review, and discover new books across different genres.",
-        tags: ["React", "Tailwind CSS", "TypeScript", "Node.js", "postgreSQL"],
+        tags: ["React", "Tailwind CSS", "TypeScript", "Node.js", "PostgreSQL"],
         image: "image/project6.jpg"
     }
 ];
@@ -105,6 +105,44 @@ function typeEffect() {
 }
 
 
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.querySelector('.theme-toggle i');
+    
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        if (themeToggle) {
+            themeToggle.className = 'fas fa-moon';
+        }
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        if (themeToggle) {
+            themeToggle.className = 'fas fa-sun';
+        }
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.querySelector('.theme-toggle i');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        if (themeToggle) {
+            themeToggle.className = 'fas fa-sun';
+        }
+    } else {
+        document.body.removeAttribute('data-theme');
+        if (themeToggle) {
+            themeToggle.className = 'fas fa-moon';
+        }
+    }
+}
+
+
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
@@ -152,6 +190,7 @@ function animateSkillBars() {
 document.addEventListener('DOMContentLoaded', function () {
     renderProjects();
     typeEffect();
+    loadTheme();  // ← Load saved theme
     setTimeout(animateSkillBars, 500);
     window.addEventListener('scroll', animateSkillBars);
     console.log('✅ Portfolio Loaded!');

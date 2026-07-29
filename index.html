@@ -1,269 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mekdes Wale - Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mekdes Wale - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-content">
-                    <div class="logo">Mekdes Wale</div>
-                    <ul class="nav-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Mekdes Wale</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     <button class="menu-toggle" onclick="toggleMenu()">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <section id="home" class="home">
-            <div class="container">
-                <div class="home-content">
-                    <div class="home-text">
-                        <h1>Mekdes Wale</h1>
-                        <h3>and I'm a <span class="multiple-text">Web
-                                Developer</span></h3>
-                        <p>Welcome to my portfolio! I'm Mekdes Wale, a
-                            passionate web developer specializing in both
-                            backend and frontend development. With a strong
-                            focus on creating seamless user experiences and
-                            robust server-side solutions, I bring your ideas to
-                            life with precision and creativity. My expertise
-                            includes modern frameworks and technologies that
-                            ensure your website is not only functional but also
-                            visually appealing. Let's collaborate to build
-                            something amazing together! Let's team up and turn
-                            your dreams into a digital masterpiece!</p>
-                        <div class="home-buttons">
-                            <a href="#projects" class="btn btn-primary">View My
-                                Work</a>
-                            <a href="#contact" class="btn btn-secondary">Contact
-                                Me</a>
-                        </div>
-                    </div>
-                    <div class="home-image">
-                        <img src="image/Home.jpg" alt="Mekdes Wale">
+    <!-- ===== HOME SECTION ===== -->
+    <section id="home" class="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>Mekdes Wale</h1>
+                    <h3>and I'm a <span class="multiple-text">Web
+                            Developer</span></h3>
+                    <p>Welcome to my portfolio! I'm Mekdes Wale, a
+                        passionate web developer specializing in both
+                        backend and frontend development. With a strong
+                        focus on creating seamless user experiences and
+                        robust server-side solutions, I bring your ideas to
+                        life with precision and creativity. My expertise
+                        includes modern frameworks and technologies that
+                        ensure your website is not only functional but also
+                        visually appealing. Let's collaborate to build
+                        something amazing together! Let's team up and turn
+                        your dreams into a digital masterpiece!</p>
+                    <div class="home-buttons">
+                        <a href="#projects" class="btn btn-primary">View My
+                            Work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact
+                            Me</a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>I'm Mekdes Wale, a passionate web developer who loves
-                            creating beautiful and functional websites. I enjoy
-                            learning new technologies and building projects that
-                            solve real problems.</p>
-                        <p>With experience in both frontend and backend
-                            development, I can build complete web applications
-                            from start to finish. My goal is to create seamless
-                            user experiences that leave a lasting
-                            impression.</p>
-
-                    </div>
-                    <div class="about-image">
-                        <img src="image/About.jpg" alt="About Me">
-                    </div>
+                <div class="home-image">
+                    <img src="image/Home.jpg" alt="Mekdes Wale">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ===== SKILLS SECTION ===== -->
-        <section id="skills" class="skills-section">
-            <div class="container">
-                <h2 class="section-title">My Skills</h2>
-                <div class="skills-content">
-                    <!-- Frontend Skills -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Frontend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span>HTML</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 90%;">90%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 85%;">85%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 80%;">80%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>React</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 75%;">75%</div>
-                                </div>
-                            </div>
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Mekdes Wale, a passionate web developer who loves
+                        creating beautiful and functional websites. I enjoy
+                        learning new technologies and building projects that
+                        solve real problems.</p>
+                    <p>With experience in both frontend and backend
+                        development, I can build complete web applications
+                        from start to finish. My goal is to create seamless
+                        user experiences that leave a lasting
+                        impression.</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span><strong>Name:</strong> Mekdes Wale</span>
                         </div>
-                    </div>
-
-                    <!-- Backend Skills -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-server"></i> Backend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span>Node.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 85%;">85%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Express.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 80%;">80%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Nest.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 75%;">75%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>MySQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 85%;">85%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tools & Others -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Tools & Others</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span>Git</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 85%;">85%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Docker</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 70%;">70%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>AWS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 65%;">65%</div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Version Control</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress"
-                                        style="width: 80%;">80%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PROJECTS SECTION ===== -->
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2 class="section-title">My Projects</h2>
-                <div class="project-grid" id="projectGrid">
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== CONTACT SECTION ===== -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Contact Me</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>mekdesw60@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+25180536095</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
+                        <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Addis Ababa, Ethiopia</p>
+                            <span><strong>Location:</strong> Addis Ababa, Ethiopia</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>Email:</strong> mekdesw60@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span><strong>Experience:</strong> 2+ Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="image/About.jpg" alt="About Me">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-content">
+                <!-- Frontend Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>HTML</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 75%;">75%</div>
                             </div>
                         </div>
                     </div>
-                    <form class="contact-form" onsubmit="handleSubmit(event)">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea rows="5" placeholder="Your Message"
-                            required></textarea>
-                        <button type="submit" class="btn btn-primary">Send
-                            Message</button>
-                    </form>
                 </div>
-            </div>
-        </section>
 
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-social">
-                        <a
-                            href="https://www.linkedin.com/in/mekdes-wale-a25a54396"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/19mekdes"><i
-                                class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Backend Skills -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Express.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Nest.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 75%;">75%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 85%;">85%</div>
+                            </div>
+                        </div>
                     </div>
-                    <p>&copy; 2026 Mekdes Wale. All rights reserved.</p>
+                </div>
+
+                <!-- Tools & Others -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Others</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 70%;">70%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>AWS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 65%;">65%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Version Control</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress"
+                                    style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </section>
 
-        <script src="script.js"></script>
-    </body>
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-grid" id="projectGrid">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mekdesw60@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+25180536095</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message"
+                        required></textarea>
+                    <button type="submit" class="btn btn-primary">Send
+                        Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a
+                        href="https://www.linkedin.com/in/mekdes-wale-a25a54396"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/19mekdes"><i
+                            class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p>&copy; 2026 Mekdes Wale. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
