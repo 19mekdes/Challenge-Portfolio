@@ -123,7 +123,6 @@ function toggleTheme() {
     }
 }
 
-
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     const themeToggle = document.querySelector('.theme-toggle i');
@@ -192,5 +191,5 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTheme();  // ← Load saved theme
     setTimeout(animateSkillBars, 500);
     window.addEventListener('scroll', animateSkillBars);
-    console.log('✅ Portfolio Loaded!');
+    console.log('Portfolio Loaded!');
 });
