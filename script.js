@@ -1,4 +1,3 @@
-
 const projects = [
     {
         id: 1,
