@@ -188,7 +188,7 @@ function animateSkillBars() {
 document.addEventListener('DOMContentLoaded', function () {
     renderProjects();
     typeEffect();
-    loadTheme();  // ← Load saved theme
+    loadTheme();  
     setTimeout(animateSkillBars, 500);
     window.addEventListener('scroll', animateSkillBars);
     console.log('Portfolio Loaded!');
