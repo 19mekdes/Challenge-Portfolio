@@ -1,3 +1,6 @@
+// ============================================
+// PROJECT DATA
+// ============================================
 const projects = [
     {
         id: 1,
@@ -43,7 +46,9 @@ const projects = [
     }
 ];
 
-
+// ============================================
+// RENDER PROJECTS
+// ============================================
 function renderProjects() {
     const grid = document.getElementById('projectGrid');
 
@@ -71,7 +76,9 @@ function renderProjects() {
     `).join('');
 }
 
-
+// ============================================
+// TYPING EFFECT
+// ============================================
 const typingText = document.querySelector('.multiple-text');
 const roles = ['Web Developer', 'Backend Developer', 'Full Stack Developer'];
 let roleIndex = 0;
@@ -103,7 +110,9 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
-
+// ============================================
+// THEME TOGGLE - DARK/LIGHT MODE
+// ============================================
 function toggleTheme() {
     const body = document.body;
     const themeToggle = document.querySelector('.theme-toggle i');
@@ -140,20 +149,107 @@ function loadTheme() {
     }
 }
 
-
+// ============================================
+// MOBILE MENU TOGGLE
+// ============================================
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
 
-
-function handleSubmit(event) {
+// ============================================
+// CONTACT FORM - WITH BACKEND API (UPDATED)
+// ============================================
+async function handleSubmit(event) {
     event.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    event.target.reset();
+    
+    // Get form elements
+    const form = event.target;
+    const nameInput = form.querySelector('input[type="text"]');
+    const emailInput = form.querySelector('input[type="email"]');
+    const messageInput = form.querySelector('textarea');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const statusDiv = document.getElementById('formStatus') || createStatusDiv(form);
+    
+    // Get values
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+    
+    // Validate
+    if (!name || !email || !message) {
+        showStatus('⚠️ Please fill in all fields!', '#dc2626', statusDiv);
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showStatus('⚠️ Please enter a valid email address!', '#dc2626', statusDiv);
+        return;
+    }
+    
+    // Show loading
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '⏳ Sending...';
+    submitBtn.disabled = true;
+    showStatus('⏳ Sending your message...', '#2563eb', statusDiv);
+    
+    try {
+        // Send to backend API
+        const response = await fetch('http://localhost:5000/api/contact/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, message })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            showStatus('✅ Message sent successfully! I will get back to you soon.', '#059669', statusDiv);
+            form.reset();
+            
+            // Clear status after 5 seconds
+            setTimeout(() => {
+                if (statusDiv) statusDiv.textContent = '';
+            }, 5000);
+        } else {
+            showStatus('❌ ' + (data.message || 'Failed to send message. Please try again.'), '#dc2626', statusDiv);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showStatus('❌ Failed to connect to server. Please try again later.', '#dc2626', statusDiv);
+    }
+    
+    // Reset button
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
 }
 
+// ============================================
+// HELPER FUNCTIONS FOR CONTACT FORM
+// ============================================
 
+function createStatusDiv(form) {
+    const statusDiv = document.createElement('div');
+    statusDiv.id = 'formStatus';
+    statusDiv.style.cssText = 'margin-top: 10px; font-weight: 500; min-height: 25px;';
+    form.appendChild(statusDiv);
+    return statusDiv;
+}
+
+function showStatus(message, color, element) {
+    if (element) {
+        element.textContent = message;
+        element.style.color = color;
+    }
+}
+
+// ============================================
+// SMOOTH SCROLL FOR NAV LINKS
+// ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -167,7 +263,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-
+// ============================================
+// SKILL BAR ANIMATION
+// ============================================
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
@@ -184,12 +282,15 @@ function animateSkillBars() {
     });
 }
 
-
+// ============================================
+// INITIALIZE
+// ============================================
 document.addEventListener('DOMContentLoaded', function () {
     renderProjects();
     typeEffect();
     loadTheme();
     setTimeout(animateSkillBars, 500);
     window.addEventListener('scroll', animateSkillBars);
-    console.log('Portfolio Loaded!');
+    console.log('✅ Portfolio Loaded!');
+    console.log('📧 Contact form sends to backend API');
 });
