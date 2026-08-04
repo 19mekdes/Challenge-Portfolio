@@ -62,9 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ============================================
-// SECTION NAVIGATION
-// ============================================
 
 function showSection(sectionName) {
     // Hide all sections
@@ -78,9 +75,6 @@ function showSection(sectionName) {
     document.querySelector(`.sidebar-btn[data-section="${sectionName}"]`).classList.add('active');
 }
 
-// ============================================
-// LOAD ALL DATA
-// ============================================
 
 function loadAllData() {
     loadProfile();
@@ -89,10 +83,6 @@ function loadAllData() {
     loadProjects();
     loadMessages();
 }
-
-// ============================================
-// PROFILE CRUD
-// ============================================
 
 function loadProfile() {
     fetch(`${API_BASE}/profile`)
