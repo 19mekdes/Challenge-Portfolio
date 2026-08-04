@@ -899,6 +899,43 @@ body {
     transform: rotate(20deg);
 }
 
+/* ===== SIGN IN BUTTON (NAVBAR) ===== */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.nav-btn:hover {
+    background: #1d4ed8;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(37, 99, 235, 0.45);
+}
+
+.nav-btn i {
+    font-size: 0.85rem;
+}
+
+/* Sign In button on small screens */
+@media (max-width: 480px) {
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+}
+
 /* ============================================
    DARK MODE VARIABLES
    ============================================ */

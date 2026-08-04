@@ -22,6 +22,11 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                     <div class="nav-right">
+                        <!-- Relative link works both when served (http://localhost:5000)
+                             and when the page is opened directly as a file (file://). -->
+                        <a href="admin.html" class="nav-btn" title="Admin login">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </a>
                         <button class="theme-toggle" onclick="toggleTheme()">
                             <i class="fas fa-moon"></i>
                         </button>

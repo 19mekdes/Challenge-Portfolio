@@ -47,33 +47,208 @@ const projects = [
 ];
 
 // ============================================
+// API CONFIGURATION
+// ============================================
+
+// Use a relative path when served by the backend, and an absolute URL when
+// the page is opened directly as a file (file://) so it can still reach the API.
+const API_BASE = window.location.protocol.startsWith('http')
+    ? '/api'
+    : 'http://localhost:5000/api';
+
+// Fallback skills used when the backend isn't reachable
+const FALLBACK_SKILLS = [
+    { id: 1, category: "Frontend", name: "HTML", level: 90 },
+    { id: 2, category: "Frontend", name: "CSS", level: 85 },
+    { id: 3, category: "Frontend", name: "JavaScript", level: 80 },
+    { id: 4, category: "Frontend", name: "React", level: 75 },
+    { id: 5, category: "Backend", name: "Node.js", level: 85 },
+    { id: 6, category: "Backend", name: "Express.js", level: 80 },
+    { id: 7, category: "Backend", name: "Nest.js", level: 75 },
+    { id: 8, category: "Backend", name: "MySQL", level: 85 },
+    { id: 9, category: "Tools", name: "Git", level: 85 },
+    { id: 10, category: "Tools", name: "Docker", level: 70 },
+    { id: 11, category: "Tools", name: "AWS", level: 65 },
+    { id: 12, category: "Tools", name: "Linux", level: 80 }
+];
+
+// ============================================
 // RENDER PROJECTS
 // ============================================
-function renderProjects() {
+function renderProjects(projectData) {
     const grid = document.getElementById('projectGrid');
+    const data = projectData || projects;
 
-    grid.innerHTML = projects.map(project => `
+    grid.innerHTML = data.map(project => `
         <div class="project-card">
             <img 
-                src="${project.image}" 
-                alt="${project.title}"
+                src="${escapeHTML(project.image)}" 
+                alt="${escapeHTML(project.title)}"
                 onerror="this.style.display='none'; this.parentElement.querySelector('.no-image').style.display='flex'"
             >
             <div class="no-image" style="display:none; height:200px; background:#f0f0f0; align-items:center; justify-content:center; flex-direction:column; color:#999; font-size:14px;">
                 <i class="fas fa-image" style="font-size:40px; margin-bottom:10px;"></i>
-                <span>${project.title}</span>
+                <span>${escapeHTML(project.title)}</span>
                 <span style="font-size:12px;">No image available</span>
             </div>
             <div class="project-info">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
+                <h3>${escapeHTML(project.title)}</h3>
+                <p>${escapeHTML(project.description)}</p>
                 <div class="project-tags">
-                    ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+                    ${project.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}
                 </div>
-                <a href="#" class="project-link">View Project →</a>
+                <a href="${escapeHTML(project.link || '#')}" class="project-link">View Project →</a>
             </div>
         </div>
     `).join('');
+}
+
+// ============================================
+// LOAD DATA FROM BACKEND
+// (This is what makes admin edits appear on the
+// frontend — both sides read/write the same API.)
+// ============================================
+
+async function loadFromAPI() {
+    // Use allSettled so one failing endpoint doesn't discard the other sections
+    const results = await Promise.allSettled([
+        fetch(`${API_BASE}/profile`),
+        fetch(`${API_BASE}/about`),
+        fetch(`${API_BASE}/skills`),
+        fetch(`${API_BASE}/projects`)
+    ]);
+
+    if (results.every(r => r.status === 'rejected')) {
+        console.warn('⚠️ Backend not reachable — showing built-in data.');
+    }
+
+    const profile = results[0].status === 'fulfilled' ? (await results[0].value.json()).data : null;
+    const about = results[1].status === 'fulfilled' ? (await results[1].value.json()).data : null;
+    const skills = results[2].status === 'fulfilled' ? (await results[2].value.json()).data : null;
+    const projects = results[3].status === 'fulfilled' ? (await results[3].value.json()).data : null;
+
+    applyProfile(profile);
+    applyAbout(about);
+    renderSkills(skills);
+    renderProjects(projects);
+
+    // Re-run the bar animation now that the skill bars exist
+    setTimeout(animateSkillBars, 300);
+}
+
+// Escape HTML special characters in admin-provided text (prevents XSS)
+function escapeHTML(str) {
+    return String(str == null ? '' : str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Apply profile data to the home section, contact info and footer
+function applyProfile(profile) {
+    if (!profile) return;
+
+    const navName = document.querySelector('.logo');
+    const homeName = document.querySelector('#home .home-text h1');
+    const homeRole = document.querySelector('.multiple-text');
+    const homeBio = document.querySelector('#home .home-text p');
+    const homeImage = document.querySelector('.home-image img');
+
+    if (navName && profile.name) navName.textContent = profile.name;
+    if (homeName && profile.name) homeName.textContent = profile.name;
+    if (homeRole && profile.title) homeRole.textContent = profile.title;
+    if (homeBio && profile.bio) homeBio.textContent = profile.bio;
+
+    // Keep the typing effect in sync with the admin-edited title
+    if (profile.title) roles[0] = profile.title;
+
+    if (homeImage && profile.profileImage) {
+        homeImage.src = profile.profileImage;
+        homeImage.onerror = function () {
+            this.src = 'image/Home.jpg';
+            this.onerror = null;
+        };
+    }
+
+    // Contact info (email, phone, location)
+    const contactItems = document.querySelectorAll('.contact-item p');
+    if (contactItems.length >= 3) {
+        if (profile.email) contactItems[0].textContent = profile.email;
+        if (profile.phone) contactItems[1].textContent = profile.phone;
+        if (profile.location) contactItems[2].textContent = profile.location;
+    }
+
+    // Footer social links (linkedin, github)
+    const socialLinks = document.querySelectorAll('.footer-social a');
+    if (socialLinks.length >= 2) {
+        if (profile.linkedin) socialLinks[0].href = profile.linkedin;
+        if (profile.github) socialLinks[1].href = profile.github;
+    }
+}
+
+// Apply about data to the about section
+function applyAbout(about) {
+    if (!about) return;
+
+    const aboutTitle = document.querySelector('#about .section-title');
+    const aboutDesc = document.querySelector('#about .about-text p');
+    const aboutImage = document.querySelector('#about .about-image img');
+
+    if (aboutTitle && about.title) aboutTitle.textContent = about.title;
+    if (aboutDesc && about.description) aboutDesc.textContent = about.description;
+
+    if (aboutImage && about.image) {
+        aboutImage.src = about.image;
+        aboutImage.onerror = function () {
+            this.src = 'image/About.jpg';
+            this.onerror = null;
+        };
+    }
+}
+
+// Render skills grouped by category (from the backend or fallback)
+function renderSkills(skillsData) {
+    const container = document.querySelector('.skills-content');
+    if (!container) return;
+
+    const skillsList = skillsData || FALLBACK_SKILLS;
+
+    if (skillsList.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#999; padding:20px;">No skills added yet</p>';
+        return;
+    }
+
+    const groups = {};
+    skillsList.forEach(skill => {
+        if (!groups[skill.category]) groups[skill.category] = [];
+        groups[skill.category].push(skill);
+    });
+
+    container.innerHTML = Object.entries(groups).map(([category, items]) => {
+        const cat = category.toLowerCase();
+        const icon = cat.includes('front') ? 'fa-code'
+            : cat.includes('back') ? 'fa-server'
+            : cat.includes('tool') ? 'fa-tools'
+            : 'fa-star';
+
+        return `
+            <div class="skill-category">
+                <h3><i class="fas ${icon}"></i> ${escapeHTML(category)}</h3>
+                <div class="skill-items">
+                    ${items.map(skill => `
+                        <div class="skill-item">
+                            <span>${escapeHTML(skill.name)}</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: ${escapeHTML(skill.level)}%;">${escapeHTML(skill.level)}%</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 // ============================================
@@ -197,7 +372,7 @@ async function handleSubmit(event) {
     
     try {
         // Send to backend API
-        const response = await fetch('http://localhost:5000/api/contact/send', {
+        const response = await fetch(`${API_BASE}/contact/send`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -286,11 +461,11 @@ function animateSkillBars() {
 // INITIALIZE
 // ============================================
 document.addEventListener('DOMContentLoaded', function () {
-    renderProjects();
     typeEffect();
     loadTheme();
     setTimeout(animateSkillBars, 500);
     window.addEventListener('scroll', animateSkillBars);
+    loadFromAPI();
     console.log('✅ Portfolio Loaded!');
-    console.log('📧 Contact form sends to backend API');
+    console.log('📧 Content is loaded from the backend API — admin edits appear here.');
 });

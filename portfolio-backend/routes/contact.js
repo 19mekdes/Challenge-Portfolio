@@ -1,20 +1,33 @@
+// ============================================
+// ROUTES/CONTACT.JS - Fixed Contact Routes
+// ============================================
+
 const express = require('express');
 const router = express.Router();
 const contactController = require('../controllers/contactController');
+const { isAuthenticated } = require('../middleware/auth');
 
-// POST: Send contact message
+// ============================================
+// PUBLIC ROUTES
+// ============================================
+
+// POST - Send contact message (Public)
 router.post('/send', contactController.sendMessage);
 
-// GET: Test email (optional)
-router.get('/test', contactController.testEmail);
+// ============================================
+// ADMIN ROUTES (Protected)
+// ============================================
 
-// GET: Check API status
-router.get('/status', (req, res) => {
-    res.json({
-        status: 'OK',
-        message: 'Contact API is working!',
-        timestamp: new Date().toISOString()
-    });
-});
+// GET - Get all messages (Admin only)
+router.get('/messages', isAuthenticated, contactController.getMessages);
+
+// GET - Get single message by ID (Admin only)
+router.get('/messages/:id', isAuthenticated, contactController.getMessageById);
+
+// DELETE - Delete message (Admin only)
+router.delete('/messages/:id', isAuthenticated, contactController.deleteMessage);
+
+// GET - Test email (Admin only)
+router.get('/test', isAuthenticated, contactController.testEmail);
 
 module.exports = router;
