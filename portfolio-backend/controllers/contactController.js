@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/CONTACTCONTROLLER.JS - PostgreSQL
-// ============================================
-
 const nodemailer = require('nodemailer');
 const { getAll, getOne } = require('../config/database');
 

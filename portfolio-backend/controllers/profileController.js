@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/PROFILECONTROLLER.JS - PostgreSQL
-// ============================================
-
 const { getOne, query } = require('../config/database');
 
 // Map DB row (snake_case) to API shape (camelCase)

@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/AUTHCONTROLLER.JS
-// ============================================
-
 // Admin credentials (stored in .env for security)
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
