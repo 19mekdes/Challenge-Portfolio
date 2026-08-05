@@ -1,7 +1,3 @@
-// ============================================
-// MIDDLEWARE/AUTH.JS - Authentication Middleware
-// ============================================
-
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
@@ -34,9 +30,7 @@ function isAuthenticated(req, res, next) {
     });
 }
 
-// ============================================
-// ADMIN LOGIN HANDLER (for /api/admin/login)
-// ============================================
+
 function login(req, res) {
     const { username, password } = req.body;
     
