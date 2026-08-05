@@ -54,9 +54,6 @@ app.use('/api/projects', projectsRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);  // ← Added auth routes
 
-// ============================================
-// HEALTH CHECK
-// ============================================
 
 app.get('/api/health', (req, res) => {
     res.json({
@@ -76,9 +73,6 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// ============================================
-// FRONTEND ROUTES
-// ============================================
 
 // Home page
 app.get('/', (req, res) => {
@@ -117,9 +111,6 @@ app.use((req, res, next) => {
     res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
 });
 
-// ============================================
-// ERROR HANDLING
-// ============================================
 
 // 404 Handler
 app.use((req, res) => {
@@ -166,9 +157,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// ============================================
-// START SERVER
-// ============================================
 
 app.listen(PORT, async () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
