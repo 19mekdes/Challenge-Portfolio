@@ -1,8 +1,3 @@
-// ============================================
-// MODELS/DATA.JS - All Data Models
-// ============================================
-
-// ===== PROFILE DATA =====
 let profile = {
     id: 1,
     name: "Mekdes Wale",
@@ -16,7 +11,6 @@ let profile = {
     profileImage: "image/mekdi.jpg"
 };
 
-// ===== ABOUT DATA =====
 let about = {
     id: 1,
     title: "About Me",
@@ -26,7 +20,7 @@ let about = {
     image: "image/About.jpg"
 };
 
-// ===== SKILLS DATA =====
+
 let skills = [
     { id: 1, category: "Frontend", name: "HTML", level: 90 },
     { id: 2, category: "Frontend", name: "CSS", level: 85 },
@@ -42,7 +36,6 @@ let skills = [
     { id: 12, category: "Tools", name: "Linux", level: 80 }
 ];
 
-// ===== PROJECTS DATA =====
 let projects = [
     {
         id: 1,
