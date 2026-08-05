@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/ADMINCONTROLLER.JS - PostgreSQL
-// ============================================
-
 const { getAll, getOne, transaction } = require('../config/database');
 
 // Admin credentials (from .env)

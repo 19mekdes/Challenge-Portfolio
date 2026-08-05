@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/ABOUTCONTROLLER.JS - PostgreSQL
-// ============================================
-
 const { getOne, query } = require('../config/database');
 
 // ============================================

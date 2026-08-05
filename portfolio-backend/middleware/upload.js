@@ -1,14 +1,6 @@
-// ============================================
-// MIDDLEWARE/UPLOAD.JS - File Upload Handler
-// ============================================
-
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
-// ============================================
-// CONFIGURATION
-// ============================================
 
 // Allowed file types
 const ALLOWED_TYPES = {
