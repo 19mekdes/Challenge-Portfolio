@@ -19,9 +19,7 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 // Configure storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        // Upload folder is resolved against this file, so uploads always land in
-        // <backend>/public/uploads regardless of the process working directory.
-        // (The server serves them back at /uploads from the same location.)
+        
         const uploadPath = path.join(__dirname, '..', 'public', 'uploads');
         
         // Create folder if it doesn't exist

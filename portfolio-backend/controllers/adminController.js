@@ -4,9 +4,6 @@ const { getAll, getOne, transaction } = require('../config/database');
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
-// ============================================
-// ADMIN LOGIN
-// ============================================
 function login(req, res) {
     try {
         const { username, password } = req.body;
@@ -43,9 +40,7 @@ function login(req, res) {
     }
 }
 
-// ============================================
-// ADMIN LOGOUT
-// ============================================
+
 function logout(req, res) {
     try {
         res.json({ success: true, message: 'Logged out successfully!' });
@@ -55,9 +50,7 @@ function logout(req, res) {
     }
 }
 
-// ============================================
-// CHECK AUTHENTICATION STATUS
-// ============================================
+
 function checkAuth(req, res) {
     try {
         res.json({
