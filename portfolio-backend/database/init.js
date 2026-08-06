@@ -1,11 +1,6 @@
-
-
 const { query, testConnection } = require('../config/database');
 const data = require('../models/data');
 
-// ============================================
-// CREATE TABLES (idempotent)
-// ============================================
 
 async function createTables() {
     await query(`

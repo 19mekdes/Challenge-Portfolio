@@ -15,9 +15,6 @@ const ALLOWED_TYPES = {
 // Max file size (5MB)
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-// ============================================
-// STORAGE CONFIGURATION
-// ============================================
 
 // Configure storage
 const storage = multer.diskStorage({

@@ -1,17 +1,3 @@
--- ============================================
--- DATABASE: portfolio_db (PostgreSQL)
--- ============================================
-
--- Create database (run separately)
--- CREATE DATABASE portfolio_db;
-
--- Connect to database
--- \c portfolio_db;
-
--- ============================================
--- EXTENSIONS
--- ============================================
-
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
