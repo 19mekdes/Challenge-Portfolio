@@ -1,8 +1,6 @@
 const { getOne, query } = require('../config/database');
 
-// ============================================
-// GET ABOUT INFORMATION (Public)
-// ============================================
+
 async function getAbout(req, res) {
     try {
         const row = await getOne('SELECT * FROM about ORDER BY id LIMIT 1');
@@ -13,9 +11,7 @@ async function getAbout(req, res) {
     }
 }
 
-// ============================================
-// UPDATE ABOUT INFORMATION (Admin only)
-// ============================================
+
 async function updateAbout(req, res) {
     try {
         const { title, description, experience, education, image } = req.body;

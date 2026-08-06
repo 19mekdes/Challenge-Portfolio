@@ -96,9 +96,7 @@ async function getDashboardStats(req, res) {
     }
 }
 
-// ============================================
-// CHANGE ADMIN PASSWORD
-// ============================================
+
 function changePassword(req, res) {
     try {
         const { currentPassword, newPassword } = req.body;
@@ -142,9 +140,6 @@ async function getAllData(req, res) {
     }
 }
 
-// ============================================
-// EXPORT DATA (Download Backup)
-// ============================================
 async function exportData(req, res) {
     try {
         const data = await fetchAllData();
