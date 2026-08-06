@@ -1,9 +1,7 @@
 const { getAll, getOne, query } = require('../config/database');
 const data = require('../models/data');
 
-// ============================================
-// GET ALL SKILLS (Public)
-// ============================================
+
 async function getSkills(req, res) {
     try {
         const rows = await getAll('SELECT * FROM skills ORDER BY id');
@@ -14,9 +12,7 @@ async function getSkills(req, res) {
     }
 }
 
-// ============================================
-// GET SKILL BY ID (Public)
-// ============================================
+
 async function getSkillById(req, res) {
     try {
         const { id } = req.params;
@@ -31,9 +27,7 @@ async function getSkillById(req, res) {
     }
 }
 
-// ============================================
-// GET SKILLS BY CATEGORY (Public)
-// ============================================
+
 async function getSkillsByCategory(req, res) {
     try {
         const { category } = req.params;
@@ -48,9 +42,7 @@ async function getSkillsByCategory(req, res) {
     }
 }
 
-// ============================================
-// GET ALL CATEGORIES (Public)
-// ============================================
+
 async function getCategories(req, res) {
     try {
         const rows = await getAll('SELECT DISTINCT category FROM skills ORDER BY category');
@@ -61,9 +53,6 @@ async function getCategories(req, res) {
     }
 }
 
-// ============================================
-// CREATE NEW SKILL (Admin only)
-// ============================================
 async function createSkill(req, res) {
     try {
         const { category, name, level } = req.body;

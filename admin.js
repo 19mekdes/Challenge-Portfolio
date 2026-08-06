@@ -1,8 +1,5 @@
 const API_BASE = 'http://localhost:5000/api';
 
-// ============================================
-// AUTHENTICATION
-// ============================================
 
 function handleLogin(event) {
     event.preventDefault();
@@ -49,9 +46,6 @@ function getHeaders() {
     };
 }
 
-// ============================================
-// CHECK AUTH ON LOAD
-// ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('adminToken');
@@ -130,9 +124,6 @@ function updateProfile(event) {
     });
 }
 
-// ============================================
-// ABOUT CRUD
-// ============================================
 
 function loadAbout() {
     fetch(`${API_BASE}/about`)
@@ -172,9 +163,7 @@ function updateAbout(event) {
     });
 }
 
-// ============================================
-// SKILLS CRUD
-// ============================================
+
 
 function loadSkills() {
     fetch(`${API_BASE}/skills`)
