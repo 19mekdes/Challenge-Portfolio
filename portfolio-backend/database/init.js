@@ -1,6 +1,4 @@
-// ============================================
-// DATABASE/INIT.JS - Create tables + seed defaults
-// ============================================
+
 
 const { query, testConnection } = require('../config/database');
 const data = require('../models/data');

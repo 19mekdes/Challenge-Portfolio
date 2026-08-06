@@ -19,9 +19,8 @@ function mapProfile(row) {
     };
 }
 
-// ============================================
-// GET PROFILE INFORMATION (Public)
-// ============================================
+   // GET PROFILE INFORMATION (Public)
+
 async function getProfile(req, res) {
     try {
         const row = await getOne('SELECT * FROM profile ORDER BY id LIMIT 1');
@@ -32,9 +31,8 @@ async function getProfile(req, res) {
     }
 }
 
-// ============================================
-// GET PROFILE BY ID (Public)
-// ============================================
+     // GET PROFILE BY ID (Public)
+
 async function getProfileById(req, res) {
     try {
         const { id } = req.params;
@@ -49,9 +47,8 @@ async function getProfileById(req, res) {
     }
 }
 
-// ============================================
-// UPDATE PROFILE INFORMATION (Admin only)
-// ============================================
+     // UPDATE PROFILE INFORMATION (Admin only)
+
 async function updateProfile(req, res) {
     try {
         const { name, title, bio, email, phone, location, github, linkedin, profileImage } = req.body;

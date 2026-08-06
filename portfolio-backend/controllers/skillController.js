@@ -1,7 +1,3 @@
-// ============================================
-// CONTROLLERS/SKILLCONTROLLER.JS - PostgreSQL
-// ============================================
-
 const { getAll, getOne, query } = require('../config/database');
 const data = require('../models/data');
 
