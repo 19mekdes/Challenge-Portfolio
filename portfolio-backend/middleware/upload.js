@@ -19,14 +19,14 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 // Configure storage
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        
+
         const uploadPath = path.join(__dirname, '..', 'public', 'uploads');
-        
+
         // Create folder if it doesn't exist
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
         }
-        
+
         cb(null, uploadPath);
     },
     filename: (req, file, cb) => {
@@ -38,9 +38,7 @@ const storage = multer.diskStorage({
     }
 });
 
-// ============================================
-// FILE FILTER
-// ============================================
+
 
 const fileFilter = (req, file, cb) => {
     // Check if file type is allowed
@@ -51,9 +49,6 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
-// ============================================
-// CREATE MULTER INSTANCE
-// ============================================
 
 const upload = multer({
     storage: storage,
@@ -63,9 +58,6 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-// ============================================
-// UPLOAD MIDDLEWARE FUNCTIONS
-// ============================================
 
 // Single file upload
 const uploadSingle = (fieldName) => {
@@ -82,9 +74,7 @@ const uploadFields = (fields) => {
     return upload.fields(fields);
 };
 
-// ============================================
-// ERROR HANDLING MIDDLEWARE
-// ============================================
+
 
 const handleUploadError = (err, req, res, next) => {
     if (err instanceof multer.MulterError) {
@@ -112,20 +102,17 @@ const handleUploadError = (err, req, res, next) => {
             message: err.message
         });
     }
-    
+
     if (err) {
         return res.status(400).json({
             success: false,
             message: err.message
         });
     }
-    
+
     next();
 };
 
-// ============================================
-// HELPER FUNCTIONS
-// ============================================
 
 // Delete file helper
 const deleteFile = (filePath) => {

@@ -18,11 +18,6 @@ function isAuthenticated(req, res, next) {
         return next();
     }
     
-    // For more secure token validation (optional)
-    // You can also validate against stored tokens
-    // if (activeTokens && activeTokens.includes(token)) {
-    //     return next();
-    // }
     
     res.status(401).json({
         success: false,
@@ -40,9 +35,8 @@ function login(req, res) {
             message: 'Please provide username and password'
         });
     }
-    
-    // The returned token is the password itself, which isAuthenticated()
-    // verifies against ADMIN_PASSWORD, so keep the checks in sync.
+
+
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
         res.json({
             success: true,
