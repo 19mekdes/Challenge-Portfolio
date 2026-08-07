@@ -76,9 +76,6 @@ async function createSkill(req, res) {
     }
 }
 
-// ============================================
-// UPDATE SKILL (Admin only)
-// ============================================
 async function updateSkill(req, res) {
     try {
         const { id } = req.params;
@@ -108,9 +105,6 @@ async function updateSkill(req, res) {
     }
 }
 
-// ============================================
-// DELETE SKILL (Admin only)
-// ============================================
 async function deleteSkill(req, res) {
     try {
         const { id } = req.params;
@@ -125,9 +119,7 @@ async function deleteSkill(req, res) {
     }
 }
 
-// ============================================
-// PARTIAL UPDATE SKILL - PATCH (Admin only)
-// ============================================
+
 const PATCHABLE_SKILL = ['category', 'name', 'level'];
 
 async function patchSkill(req, res) {
@@ -166,9 +158,6 @@ async function patchSkill(req, res) {
     }
 }
 
-// ============================================
-// RESET SKILLS TO DEFAULT (Admin only)
-// ============================================
 async function resetSkills(req, res) {
     try {
         await query('DELETE FROM skills');
@@ -186,9 +175,6 @@ async function resetSkills(req, res) {
     }
 }
 
-// ============================================
-// BULK CREATE SKILLS (Admin only)
-// ============================================
 async function bulkCreateSkills(req, res) {
     try {
         const { skills } = req.body;

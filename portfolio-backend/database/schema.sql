@@ -1,9 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
--- ============================================
--- TABLE: users (Admin Users)
--- ============================================
+
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -22,9 +20,7 @@ INSERT INTO users (username, email, full_name, role)
 VALUES ('admin', 'mekdesw60@gmail.com', 'Mekdes Wale', 'admin')
 ON CONFLICT (username) DO NOTHING;
 
--- ============================================
--- TABLE: profile
--- ============================================
+
 CREATE TABLE IF NOT EXISTS profile (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -110,9 +106,7 @@ INSERT INTO skills (category, name, level) VALUES
 ('Tools', 'Linux', 80)
 ON CONFLICT (id) DO NOTHING;
 
--- ============================================
--- TABLE: projects
--- ============================================
+
 CREATE TABLE IF NOT EXISTS projects (
     id SERIAL PRIMARY KEY,
     title VARCHAR(200) NOT NULL,
