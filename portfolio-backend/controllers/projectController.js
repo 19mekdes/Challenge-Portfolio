@@ -8,9 +8,7 @@ function normalizeTags(tags) {
     return String(tags).split(',').map(t => t.trim()).filter(Boolean);
 }
 
-// ============================================
-// GET ALL PROJECTS (Public)
-// ============================================
+
 async function getProjects(req, res) {
     try {
         const rows = await getAll('SELECT * FROM projects ORDER BY id');
@@ -21,9 +19,6 @@ async function getProjects(req, res) {
     }
 }
 
-// ============================================
-// GET PROJECT BY ID (Public)
-// ============================================
 async function getProjectById(req, res) {
     try {
         const { id } = req.params;
@@ -38,9 +33,6 @@ async function getProjectById(req, res) {
     }
 }
 
-// ============================================
-// GET PROJECTS BY TAG (Public)
-// ============================================
 async function getProjectsByTag(req, res) {
     try {
         const { tag } = req.params;
@@ -52,9 +44,6 @@ async function getProjectsByTag(req, res) {
     }
 }
 
-// ============================================
-// GET PROJECTS BY CATEGORY (Public, matches tags)
-// ============================================
 async function getProjectsByCategory(req, res) {
     try {
         const { category } = req.params;
@@ -66,9 +55,6 @@ async function getProjectsByCategory(req, res) {
     }
 }
 
-// ============================================
-// SEARCH PROJECTS (Public)
-// ============================================
 async function searchProjects(req, res) {
     try {
         const { q } = req.query;
@@ -93,9 +79,6 @@ async function searchProjects(req, res) {
     }
 }
 
-// ============================================
-// CREATE NEW PROJECT (Admin only)
-// ============================================
 async function createProject(req, res) {
     try {
         const { title, description, tags, image, link } = req.body;
@@ -123,9 +106,6 @@ async function createProject(req, res) {
     }
 }
 
-// ============================================
-// UPDATE PROJECT (Admin only)
-// ============================================
 async function updateProject(req, res) {
     try {
         const { id } = req.params;
@@ -157,9 +137,6 @@ async function updateProject(req, res) {
     }
 }
 
-// ============================================
-// DELETE PROJECT (Admin only)
-// ============================================
 async function deleteProject(req, res) {
     try {
         const { id } = req.params;
@@ -174,9 +151,6 @@ async function deleteProject(req, res) {
     }
 }
 
-// ============================================
-// PARTIAL UPDATE PROJECT - PATCH (Admin only)
-// ============================================
 const PATCHABLE_PROJECT = ['title', 'description', 'tags', 'image', 'link'];
 
 async function patchProject(req, res) {
