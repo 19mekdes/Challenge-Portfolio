@@ -68,9 +68,6 @@ function checkAuth(req, res) {
     }
 }
 
-// ============================================
-// GET ADMIN DASHBOARD STATS
-// ============================================
 async function getDashboardStats(req, res) {
     try {
         const [projects, skills, messages, categories] = await Promise.all([
@@ -127,9 +124,6 @@ function changePassword(req, res) {
     }
 }
 
-// ============================================
-// GET ALL DATA (Full Backup)
-// ============================================
 async function getAllData(req, res) {
     try {
         const data = await fetchAllData();
@@ -154,9 +148,6 @@ async function exportData(req, res) {
     }
 }
 
-// ============================================
-// IMPORT DATA (Restore Backup)
-// ============================================
 async function importData(req, res) {
     try {
         const { data: imported } = req.body;
@@ -252,10 +243,6 @@ async function importData(req, res) {
         res.status(500).json({ success: false, message: 'Failed to import data' });
     }
 }
-
-// ============================================
-// HELPERS
-// ============================================
 async function fetchAllData() {
     const [profile, about, skills, projects, messages] = await Promise.all([
         getOne('SELECT * FROM profile ORDER BY id LIMIT 1'),

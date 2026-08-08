@@ -90,9 +90,6 @@ function changePassword(req, res) {
     });
 }
 
-// ============================================
-// HELPER - Generate simple token
-// ============================================
 function generateToken(username) {
     // Simple token generation (for demo only)
     const timestamp = Date.now();
