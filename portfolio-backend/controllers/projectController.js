@@ -191,9 +191,7 @@ async function patchProject(req, res) {
     }
 }
 
-// ============================================
-// RESET PROJECTS TO DEFAULT (Admin only)
-// ============================================
+
 async function resetProjects(req, res) {
     try {
         await query('DELETE FROM projects');

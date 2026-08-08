@@ -32,9 +32,6 @@ function mapMessage(row) {
     };
 }
 
-// ============================================
-// GET - Get all messages (Admin only)
-// ============================================
 async function getMessages(req, res) {
     try {
         const rows = await getAll(

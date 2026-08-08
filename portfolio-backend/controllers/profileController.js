@@ -84,9 +84,6 @@ async function updateProfile(req, res) {
     }
 }
 
-// ============================================
-// PARTIAL UPDATE PROFILE - PATCH (Admin only)
-// ============================================
 const PATCHABLE_PROFILE = ['name', 'title', 'bio', 'email', 'phone', 'location', 'github', 'linkedin', 'profileImage'];
 
 async function patchProfile(req, res) {
@@ -121,9 +118,6 @@ async function patchProfile(req, res) {
     }
 }
 
-// ============================================
-// RESET PROFILE TO DEFAULT (Admin only)
-// ============================================
 async function resetProfile(req, res) {
     try {
         await query(
@@ -147,9 +141,7 @@ async function resetProfile(req, res) {
     }
 }
 
-// ============================================
-// UPLOAD PROFILE IMAGE (Admin only)
-// ============================================
+
 async function uploadProfileImage(req, res) {
     try {
         const { imagePath } = req.body;
