@@ -72,10 +72,6 @@ async function createTables() {
     `);
 }
 
-// ============================================
-// SEED DEFAULT DATA (only if a table is empty)
-// ============================================
-
 async function seedIfEmpty() {
     // Profile
     const profileCount = (await query('SELECT COUNT(*)::int AS c FROM profile')).rows[0].c;

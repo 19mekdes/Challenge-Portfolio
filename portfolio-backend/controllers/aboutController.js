@@ -10,8 +10,6 @@ async function getAbout(req, res) {
         res.status(500).json({ success: false, message: 'Failed to fetch about information' });
     }
 }
-
-
 async function updateAbout(req, res) {
     try {
         const { title, description, experience, education, image } = req.body;
@@ -41,10 +39,6 @@ async function updateAbout(req, res) {
         res.status(500).json({ success: false, message: 'Failed to update about information' });
     }
 }
-
-// ============================================
-// GET ABOUT BY ID (Public)
-// ============================================
 async function getAboutById(req, res) {
     try {
         const { id } = req.params;
@@ -59,9 +53,6 @@ async function getAboutById(req, res) {
     }
 }
 
-// ============================================
-// RESET ABOUT TO DEFAULT (Admin only)
-// ============================================
 async function resetAbout(req, res) {
     try {
         await query(
@@ -81,9 +72,7 @@ async function resetAbout(req, res) {
     }
 }
 
-// ============================================
-// PARTIAL UPDATE ABOUT - PATCH (Admin only)
-// ============================================
+
 const PATCHABLE_ABOUT = ['title', 'description', 'experience', 'education', 'image'];
 
 async function patchAbout(req, res) {

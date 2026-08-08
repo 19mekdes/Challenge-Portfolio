@@ -148,8 +148,6 @@ async function deleteMessage(req, res) {
         res.status(500).json({ success: false, message: 'Failed to delete message' });
     }
 }
-
-
 async function testEmail(req, res) {
     try {
         const mailOptions = {
