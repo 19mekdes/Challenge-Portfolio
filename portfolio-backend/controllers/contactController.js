@@ -44,9 +44,7 @@ async function getMessages(req, res) {
     }
 }
 
-// ============================================
-// GET - Get single message by ID (Admin only)
-// ============================================
+
 async function getMessageById(req, res) {
     try {
         const { id } = req.params;
@@ -63,9 +61,6 @@ async function getMessageById(req, res) {
     }
 }
 
-// ============================================
-// POST - Send contact message (Public)
-// ============================================
 async function sendMessage(req, res) {
     try {
         const { name, email, message } = req.body;
@@ -91,8 +86,7 @@ async function sendMessage(req, res) {
             [name.trim(), email.trim(), message.trim()]
         );
 
-        // Send the notification email. A failure here shouldn't lose the
-        // message — it's already saved, so we log and continue.
+    
         try {
             const safeName = escapeHtml(name);
             const safeEmail = escapeHtml(email);
@@ -138,9 +132,7 @@ async function sendMessage(req, res) {
     }
 }
 
-// ============================================
-// DELETE - Delete message (Admin only)
-// ============================================
+
 async function deleteMessage(req, res) {
     try {
         const { id } = req.params;
@@ -157,9 +149,7 @@ async function deleteMessage(req, res) {
     }
 }
 
-// ============================================
-// GET - Test email (Admin only)
-// ============================================
+
 async function testEmail(req, res) {
     try {
         const mailOptions = {

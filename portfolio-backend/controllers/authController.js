@@ -39,9 +39,6 @@ function login(req, res) {
     }
 }
 
-// ============================================
-// LOGOUT - Logout admin
-// ============================================
 function logout(req, res) {
     const token = req.headers.authorization;
     
