@@ -51,9 +51,6 @@ function logout(req, res) {
     });
 }
 
-// ============================================
-// CHECK AUTH - Check if user is authenticated
-// ============================================
 function checkAuth(req, res) {
     res.json({
         success: true,
@@ -65,9 +62,6 @@ function checkAuth(req, res) {
     });
 }
 
-// ============================================
-// CHANGE PASSWORD - Change admin password
-// ============================================
 function changePassword(req, res) {
     const { currentPassword, newPassword } = req.body;
     
