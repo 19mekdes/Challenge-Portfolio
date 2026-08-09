@@ -1,6 +1,4 @@
-// ============================================
-// PROJECT DATA
-// ============================================
+
 const projects = [
     {
         id: 1,
@@ -46,12 +44,7 @@ const projects = [
     }
 ];
 
-// ============================================
-// API CONFIGURATION
-// ============================================
 
-// Use a relative path when served by the backend, and an absolute URL when
-// the page is opened directly as a file (file://) so it can still reach the API.
 const API_BASE = window.location.protocol.startsWith('http')
     ? '/api'
     : 'http://localhost:5000/api';
@@ -72,9 +65,6 @@ const FALLBACK_SKILLS = [
     { id: 12, category: "Tools", name: "Linux", level: 80 }
 ];
 
-// ============================================
-// RENDER PROJECTS
-// ============================================
 function renderProjects(projectData) {
     const grid = document.getElementById('projectGrid');
     const data = projectData || projects;
@@ -102,12 +92,6 @@ function renderProjects(projectData) {
         </div>
     `).join('');
 }
-
-// ============================================
-// LOAD DATA FROM BACKEND
-// (This is what makes admin edits appear on the
-// frontend — both sides read/write the same API.)
-// ============================================
 
 async function loadFromAPI() {
     // Use allSettled so one failing endpoint doesn't discard the other sections
@@ -251,9 +235,7 @@ function renderSkills(skillsData) {
     }).join('');
 }
 
-// ============================================
-// TYPING EFFECT
-// ============================================
+
 const typingText = document.querySelector('.multiple-text');
 const roles = ['Web Developer', 'Backend Developer', 'Full Stack Developer'];
 let roleIndex = 0;
@@ -285,9 +267,6 @@ function typeEffect() {
     setTimeout(typeEffect, speed);
 }
 
-// ============================================
-// THEME TOGGLE - DARK/LIGHT MODE
-// ============================================
 function toggleTheme() {
     const body = document.body;
     const themeToggle = document.querySelector('.theme-toggle i');
@@ -324,17 +303,13 @@ function loadTheme() {
     }
 }
 
-// ============================================
-// MOBILE MENU TOGGLE
-// ============================================
+
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
 
-// ============================================
-// CONTACT FORM - WITH BACKEND API (UPDATED)
-// ============================================
+
 async function handleSubmit(event) {
     event.preventDefault();
     
@@ -402,10 +377,6 @@ async function handleSubmit(event) {
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
 }
-
-// ============================================
-// HELPER FUNCTIONS FOR CONTACT FORM
-// ============================================
 
 function createStatusDiv(form) {
     const statusDiv = document.createElement('div');
