@@ -1,7 +1,3 @@
-// ============================================
-// CONFIG/DATABASE.JS - PostgreSQL Connection
-// ============================================
-
 const { Pool } = require('pg');
 require('dotenv').config();
 

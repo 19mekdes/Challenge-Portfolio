@@ -52,7 +52,7 @@ app.use('/api/about', aboutRoutes);
 app.use('/api/skills', skillsRoutes);
 app.use('/api/projects', projectsRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/auth', authRoutes);  // ← Added auth routes
+app.use('/api/auth', authRoutes);  
 
 
 app.get('/api/health', (req, res) => {
@@ -91,9 +91,7 @@ app.get(['/admin', '/admin.html'], (req, res) => {
     });
 });
 
-// Catch-all for frontend routes (SPA support)
-// NOTE: Express 5 requires named wildcards — a bare '*' route throws a PathError.
-// A pathless middleware avoids the SPA fallback being registered as a route.
+
 app.use((req, res, next) => {
     // Check if requesting API
     if (req.path.startsWith('/api/')) {
@@ -102,8 +100,7 @@ app.use((req, res, next) => {
             message: 'API endpoint not found'
         });
     }
-    // Only serve the SPA fallback for browser navigations (GET/HEAD);
-    // other methods fall through to the 404 handler below.
+    
     if (req.method !== 'GET' && req.method !== 'HEAD') {
         return next();
     }
