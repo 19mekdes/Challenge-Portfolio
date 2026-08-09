@@ -1,235 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Mekdes Wale</title>
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Panel - Mekdes Wale</title>
+        <link rel="stylesheet" href="admin.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
 
-    <!-- ===== LOGIN PAGE ===== -->
-    <div id="loginPage" class="login-page">
-        <div class="login-container">
-            <h1><i class="fas fa-crown"></i> Admin Login</h1>
-            <p style="color:#666; text-align:center; margin-bottom:20px;">Enter your credentials to access dashboard</p>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-                <div id="loginError" style="color:#dc2626; margin-top:10px; text-align:center;"></div>
-            </form>
+        <!-- ===== LOGIN PAGE ===== -->
+        <div id="loginPage" class="login-page">
+            <div class="login-container">
+                <h1><i class="fas fa-crown"></i> Admin Login</h1>
+                <p
+                    style="color:#666; text-align:center; margin-bottom:20px;">Enter
+                    your credentials to access dashboard</p>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <input type="text" id="username" placeholder="Username"
+                        required>
+                    <input type="password" id="password" placeholder="Password"
+                        required>
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <div id="loginError"
+                        style="color:#dc2626; margin-top:10px; text-align:center;"></div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- ===== ADMIN DASHBOARD ===== -->
-    <div id="adminDashboard" style="display:none;">
+        <!-- ===== ADMIN DASHBOARD ===== -->
+        <div id="adminDashboard" style="display:none;">
 
-        <!-- Navbar -->
-        <nav class="admin-nav">
-            <div class="nav-container">
-                <div class="nav-left">
-                    <h2><i class="fas fa-crown"></i> Admin Panel</h2>
-                    <span class="admin-badge">Mekdes Wale</span>
-                </div>
-                <div class="nav-right">
-                    <button onclick="loadAllData()" class="btn-refresh">
-                        <i class="fas fa-sync-alt"></i> Refresh
-                    </button>
-                    <button onclick="logout()" class="btn-logout">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <div class="admin-container">
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <button onclick="showSection('profile')" class="sidebar-btn active" data-section="profile">
-                    <i class="fas fa-user"></i> Profile
-                </button>
-                <button onclick="showSection('about')" class="sidebar-btn" data-section="about">
-                    <i class="fas fa-info-circle"></i> About
-                </button>
-                <button onclick="showSection('skills')" class="sidebar-btn" data-section="skills">
-                    <i class="fas fa-code"></i> Skills
-                </button>
-                <button onclick="showSection('projects')" class="sidebar-btn" data-section="projects">
-                    <i class="fas fa-project-diagram"></i> Projects
-                </button>
-                <button onclick="showSection('messages')" class="sidebar-btn" data-section="messages">
-                    <i class="fas fa-envelope"></i> Messages
-                    <span id="messageCount" class="badge">0</span>
-                </button>
-            </div>
-
-            <!-- Content Area -->
-            <div class="content">
-
-                <!-- ===== PROFILE SECTION ===== -->
-                <div id="profileSection" class="section active">
-                    <h2><i class="fas fa-user"></i> Profile Settings</h2>
-                    <div class="section-desc">Update your personal information displayed on the portfolio</div>
-                    <form id="profileForm" onsubmit="updateProfile(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" id="pName" placeholder="Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" id="pTitle" placeholder="Title (e.g., Web Developer)">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Bio / Description</label>
-                            <textarea id="pBio" placeholder="Write your bio..." rows="4"></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" id="pEmail" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label>Phone</label>
-                                <input type="text" id="pPhone" placeholder="Phone">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Location</label>
-                                <input type="text" id="pLocation" placeholder="Location">
-                            </div>
-                            <div class="form-group">
-                                <label>Profile Image Path</label>
-                                <input type="text" id="pImage" placeholder="e.g., image/mekdi.jpg">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>GitHub URL</label>
-                                <input type="text" id="pGithub" placeholder="GitHub URL">
-                            </div>
-                            <div class="form-group">
-                                <label>LinkedIn URL</label>
-                                <input type="text" id="pLinkedin" placeholder="LinkedIn URL">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn-save">
-                            <i class="fas fa-save"></i> Update Profile
+            <!-- Navbar -->
+            <nav class="admin-nav">
+                <div class="nav-container">
+                    <div class="nav-left">
+                        <h2><i class="fas fa-crown"></i> Admin Panel</h2>
+                        <span class="admin-badge">Mekdes Wale</span>
+                    </div>
+                    <div class="nav-right">
+                        <button onclick="loadAllData()" class="btn-refresh">
+                            <i class="fas fa-sync-alt"></i> Refresh
                         </button>
-                        <div id="profileStatus" class="status-message"></div>
-                    </form>
-                </div>
-
-                <!-- ===== ABOUT SECTION ===== -->
-                <div id="aboutSection" class="section">
-                    <h2><i class="fas fa-info-circle"></i> About Settings</h2>
-                    <div class="section-desc">Update the "About Me" section content</div>
-                    <form id="aboutForm" onsubmit="updateAbout(event)">
-                        <div class="form-group">
-                            <label>Section Title</label>
-                            <input type="text" id="aTitle" placeholder="Title">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea id="aDescription" placeholder="Write about yourself..." rows="5"></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Experience</label>
-                                <input type="text" id="aExperience" placeholder="e.g., 2+ Years">
-                            </div>
-                            <div class="form-group">
-                                <label>Education</label>
-                                <input type="text" id="aEducation" placeholder="e.g., Computer Science">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>About Image Path</label>
-                            <input type="text" id="aImage" placeholder="e.g., image/About.jpg">
-                        </div>
-                        <button type="submit" class="btn-save">
-                            <i class="fas fa-save"></i> Update About
+                        <button onclick="logout()" class="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
-                        <div id="aboutStatus" class="status-message"></div>
-                    </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="admin-container">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <button onclick="showSection('profile')"
+                        class="sidebar-btn active" data-section="profile">
+                        <i class="fas fa-user"></i> Profile
+                    </button>
+                    <button onclick="showSection('about')" class="sidebar-btn"
+                        data-section="about">
+                        <i class="fas fa-info-circle"></i> About
+                    </button>
+                    <button onclick="showSection('skills')" class="sidebar-btn"
+                        data-section="skills">
+                        <i class="fas fa-code"></i> Skills
+                    </button>
+                    <button onclick="showSection('projects')"
+                        class="sidebar-btn" data-section="projects">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </button>
+                    <button onclick="showSection('messages')"
+                        class="sidebar-btn" data-section="messages">
+                        <i class="fas fa-envelope"></i> Messages
+                        <span id="messageCount" class="badge">0</span>
+                    </button>
                 </div>
 
-                <!-- ===== SKILLS SECTION ===== -->
-                <div id="skillsSection" class="section">
-                    <h2><i class="fas fa-code"></i> Skills Management</h2>
-                    <div class="section-desc">Add, edit, or remove your skills</div>
-                    <form id="skillForm" onsubmit="addSkill(event)" class="inline-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <select id="sCategory" required>
-                                    <option value="">Select Category</option>
-                                    <option value="Frontend">Frontend</option>
-                                    <option value="Backend">Backend</option>
-                                    <option value="Tools">Tools</option>
-                                </select>
+                <!-- Content Area -->
+                <div class="content">
+
+                    <!-- ===== PROFILE SECTION ===== -->
+                    <div id="profileSection" class="section active">
+                        <h2><i class="fas fa-user"></i> Profile Settings</h2>
+                        <div class="section-desc">Update your personal
+                            information displayed on the portfolio</div>
+                        <form id="profileForm" onsubmit="updateProfile(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="pName"
+                                        placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" id="pTitle"
+                                        placeholder="Title (e.g., Web Developer)">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="sName" placeholder="Skill Name" required>
+                                <label>Bio / Description</label>
+                                <textarea id="pBio"
+                                    placeholder="Write your bio..."
+                                    rows="4"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="pEmail"
+                                        placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" id="pPhone"
+                                        placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" id="pLocation"
+                                        placeholder="Location">
+                                </div>
+                                <div class="form-group">
+                                    <label>Profile Image Path</label>
+                                    <input type="text" id="pImage"
+                                        placeholder="e.g., image/mekdi.jpg">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>GitHub URL</label>
+                                    <input type="text" id="pGithub"
+                                        placeholder="GitHub URL">
+                                </div>
+                                <div class="form-group">
+                                    <label>LinkedIn URL</label>
+                                    <input type="text" id="pLinkedin"
+                                        placeholder="LinkedIn URL">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-save">
+                                <i class="fas fa-save"></i> Update Profile
+                            </button>
+                            <div id="profileStatus"
+                                class="status-message"></div>
+                        </form>
+                    </div>
+
+                    <!-- ===== ABOUT SECTION ===== -->
+                    <div id="aboutSection" class="section">
+                        <h2><i class="fas fa-info-circle"></i> About
+                            Settings</h2>
+                        <div class="section-desc">Update the "About Me" section
+                            content</div>
+                        <form id="aboutForm" onsubmit="updateAbout(event)">
+                            <div class="form-group">
+                                <label>Section Title</label>
+                                <input type="text" id="aTitle"
+                                    placeholder="Title">
                             </div>
                             <div class="form-group">
-                                <input type="number" id="sLevel" placeholder="Level (1-100)" min="1" max="100" required>
+                                <label>Description</label>
+                                <textarea id="aDescription"
+                                    placeholder="Write about yourself..."
+                                    rows="5"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Experience</label>
+                                    <input type="text" id="aExperience"
+                                        placeholder="e.g., 2+ Years">
+                                </div>
+                                <div class="form-group">
+                                    <label>Education</label>
+                                    <input type="text" id="aEducation"
+                                        placeholder="e.g., Computer Science">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>About Image Path</label>
+                                <input type="text" id="aImage"
+                                    placeholder="e.g., image/About.jpg">
+                            </div>
+                            <button type="submit" class="btn-save">
+                                <i class="fas fa-save"></i> Update About
+                            </button>
+                            <div id="aboutStatus" class="status-message"></div>
+                        </form>
+                    </div>
+
+                    <!-- ===== SKILLS SECTION ===== -->
+                    <div id="skillsSection" class="section">
+                        <h2><i class="fas fa-code"></i> Skills Management</h2>
+                        <div class="section-desc">Add, edit, or remove your
+                            skills</div>
+                        <form id="skillForm" onsubmit="addSkill(event)"
+                            class="inline-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <select id="sCategory" required>
+                                        <option value>Select Category</option>
+                                        <option
+                                            value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="Tools">Tools</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="sName"
+                                        placeholder="Skill Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="sLevel"
+                                        placeholder="Level (1-100)" min="1"
+                                        max="100" required>
+                                </div>
+                                <button type="submit" class="btn-add">
+                                    <i class="fas fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </form>
+                        <div id="skillsList" class="items-list"></div>
+                        <div id="skillStatus" class="status-message"></div>
+                    </div>
+
+                    <!-- ===== PROJECTS SECTION ===== -->
+                    <div id="projectsSection" class="section">
+                        <h2><i class="fas fa-project-diagram"></i> Projects
+                            Management</h2>
+                        <div class="section-desc">Add, edit, or remove your
+                            projects</div>
+                        <form id="projectForm" onsubmit="addProject(event)"
+                            class="inline-form">
+                            <div class="form-group">
+                                <input type="text" id="projTitle"
+                                    placeholder="Project Title" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="projTags"
+                                    placeholder="Tags (comma separated)">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="projImage"
+                                    placeholder="Image Path">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="projLink"
+                                    placeholder="Project Link">
+                            </div>
+                            <div class="form-group full-width">
+                                <textarea id="projDescription"
+                                    placeholder="Project Description" rows="3"
+                                    required></textarea>
                             </div>
                             <button type="submit" class="btn-add">
-                                <i class="fas fa-plus"></i> Add
+                                <i class="fas fa-plus"></i> Add Project
                             </button>
-                        </div>
-                    </form>
-                    <div id="skillsList" class="items-list"></div>
-                    <div id="skillStatus" class="status-message"></div>
-                </div>
+                        </form>
+                        <div id="projectsList" class="items-list"></div>
+                        <div id="projectStatus" class="status-message"></div>
+                    </div>
 
-                <!-- ===== PROJECTS SECTION ===== -->
-                <div id="projectsSection" class="section">
-                    <h2><i class="fas fa-project-diagram"></i> Projects Management</h2>
-                    <div class="section-desc">Add, edit, or remove your projects</div>
-                    <form id="projectForm" onsubmit="addProject(event)" class="inline-form">
-                        <div class="form-group">
-                            <input type="text" id="projTitle" placeholder="Project Title" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="projTags" placeholder="Tags (comma separated)">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="projImage" placeholder="Image Path">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="projLink" placeholder="Project Link">
-                        </div>
-                        <div class="form-group full-width">
-                            <textarea id="projDescription" placeholder="Project Description" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-add">
-                            <i class="fas fa-plus"></i> Add Project
-                        </button>
-                    </form>
-                    <div id="projectsList" class="items-list"></div>
-                    <div id="projectStatus" class="status-message"></div>
-                </div>
+                    <!-- ===== MESSAGES SECTION ===== -->
+                    <div id="messagesSection" class="section">
+                        <h2><i class="fas fa-envelope"></i> Messages</h2>
+                        <div class="section-desc">View and manage messages from
+                            your portfolio</div>
+                        <div id="messagesList" class="messages-list"></div>
+                        <div id="messageStatus" class="status-message"></div>
+                    </div>
 
-                <!-- ===== MESSAGES SECTION ===== -->
-                <div id="messagesSection" class="section">
-                    <h2><i class="fas fa-envelope"></i> Messages</h2>
-                    <div class="section-desc">View and manage messages from your portfolio</div>
-                    <div id="messagesList" class="messages-list"></div>
-                    <div id="messageStatus" class="status-message"></div>
                 </div>
-
             </div>
         </div>
-    </div>
 
-    <script src="admin.js"></script>
-</body>
+        <script src="admin.js"></script>
+    </body>
 </html>

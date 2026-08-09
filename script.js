@@ -214,8 +214,8 @@ function renderSkills(skillsData) {
         const cat = category.toLowerCase();
         const icon = cat.includes('front') ? 'fa-code'
             : cat.includes('back') ? 'fa-server'
-            : cat.includes('tool') ? 'fa-tools'
-            : 'fa-star';
+                : cat.includes('tool') ? 'fa-tools'
+                    : 'fa-star';
 
         return `
             <div class="skill-category">
@@ -312,7 +312,7 @@ function toggleMenu() {
 
 async function handleSubmit(event) {
     event.preventDefault();
-    
+
     // Get form elements
     const form = event.target;
     const nameInput = form.querySelector('input[type="text"]');
@@ -320,31 +320,31 @@ async function handleSubmit(event) {
     const messageInput = form.querySelector('textarea');
     const submitBtn = form.querySelector('button[type="submit"]');
     const statusDiv = document.getElementById('formStatus') || createStatusDiv(form);
-    
+
     // Get values
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
-    
+
     // Validate
     if (!name || !email || !message) {
         showStatus('⚠️ Please fill in all fields!', '#dc2626', statusDiv);
         return;
     }
-    
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showStatus('⚠️ Please enter a valid email address!', '#dc2626', statusDiv);
         return;
     }
-    
+
     // Show loading
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '⏳ Sending...';
     submitBtn.disabled = true;
     showStatus('⏳ Sending your message...', '#2563eb', statusDiv);
-    
+
     try {
         // Send to backend API
         const response = await fetch(`${API_BASE}/contact/send`, {
@@ -354,13 +354,13 @@ async function handleSubmit(event) {
             },
             body: JSON.stringify({ name, email, message })
         });
-        
+
         const data = await response.json();
-        
+
         if (response.ok && data.success) {
             showStatus('✅ Message sent successfully! I will get back to you soon.', '#059669', statusDiv);
             form.reset();
-            
+
             // Clear status after 5 seconds
             setTimeout(() => {
                 if (statusDiv) statusDiv.textContent = '';
@@ -372,7 +372,7 @@ async function handleSubmit(event) {
         console.error('Error:', error);
         showStatus('❌ Failed to connect to server. Please try again later.', '#dc2626', statusDiv);
     }
-    
+
     // Reset button
     submitBtn.innerHTML = originalText;
     submitBtn.disabled = false;
@@ -409,9 +409,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ============================================
-// SKILL BAR ANIMATION
-// ============================================
+
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
@@ -428,9 +426,7 @@ function animateSkillBars() {
     });
 }
 
-// ============================================
-// INITIALIZE
-// ============================================
+
 document.addEventListener('DOMContentLoaded', function () {
     typeEffect();
     loadTheme();
