@@ -1,32 +1,31 @@
 const API_BASE = 'http://localhost:5000/api';
 
-
 function handleLogin(event) {
     event.preventDefault();
-    
+
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const errorDiv = document.getElementById('loginError');
-    
+
     fetch(`${API_BASE}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            localStorage.setItem('adminToken', data.token);
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('adminDashboard').style.display = 'block';
-            loadAllData();
-        } else {
-            errorDiv.textContent = '❌ ' + data.message;
-        }
-    })
-    .catch(() => {
-        errorDiv.textContent = '❌ Connection error!';
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem('adminToken', data.token);
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                loadAllData();
+            } else {
+                errorDiv.textContent = '❌ ' + data.message;
+            }
+        })
+        .catch(() => {
+            errorDiv.textContent = '❌ Connection error!';
+        });
 }
 
 function logout() {
@@ -47,7 +46,7 @@ function getHeaders() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('adminToken');
     if (token) {
         document.getElementById('loginPage').style.display = 'none';
@@ -60,10 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function showSection(sectionName) {
     // Hide all sections
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    
+
     // Show selected section
     document.getElementById(sectionName + 'Section').classList.add('active');
-    
+
     // Update sidebar buttons
     document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.sidebar-btn[data-section="${sectionName}"]`).classList.add('active');
@@ -99,7 +98,7 @@ function loadProfile() {
 
 function updateProfile(event) {
     event.preventDefault();
-    
+
     const data = {
         name: document.getElementById('pName').value,
         title: document.getElementById('pTitle').value,
@@ -111,17 +110,17 @@ function updateProfile(event) {
         linkedin: document.getElementById('pLinkedin').value,
         profileImage: document.getElementById('pImage').value
     };
-    
+
     fetch(`${API_BASE}/profile`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('profileStatus', data.message, data.success);
-        if (data.success) loadProfile();
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('profileStatus', data.message, data.success);
+            if (data.success) loadProfile();
+        });
 }
 
 
@@ -142,7 +141,7 @@ function loadAbout() {
 
 function updateAbout(event) {
     event.preventDefault();
-    
+
     const data = {
         title: document.getElementById('aTitle').value,
         description: document.getElementById('aDescription').value,
@@ -150,19 +149,18 @@ function updateAbout(event) {
         education: document.getElementById('aEducation').value,
         image: document.getElementById('aImage').value
     };
-    
+
     fetch(`${API_BASE}/about`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('aboutStatus', data.message, data.success);
-        if (data.success) loadAbout();
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('aboutStatus', data.message, data.success);
+            if (data.success) loadAbout();
+        });
 }
-
 
 
 function loadSkills() {
@@ -177,12 +175,12 @@ function loadSkills() {
 
 function renderSkills(skills) {
     const container = document.getElementById('skillsList');
-    
+
     if (skills.length === 0) {
         container.innerHTML = '<p style="color:#999; text-align:center; padding:20px;">No skills added yet</p>';
         return;
     }
-    
+
     container.innerHTML = skills.map(skill => `
         <div class="item-card">
             <div class="item-info">
@@ -203,40 +201,40 @@ function renderSkills(skills) {
 
 function addSkill(event) {
     event.preventDefault();
-    
+
     const data = {
         category: document.getElementById('sCategory').value,
         name: document.getElementById('sName').value,
         level: parseInt(document.getElementById('sLevel').value)
     };
-    
+
     fetch(`${API_BASE}/skills`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('skillStatus', data.message, data.success);
-        if (data.success) {
-            document.getElementById('skillForm').reset();
-            loadSkills();
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('skillStatus', data.message, data.success);
+            if (data.success) {
+                document.getElementById('skillForm').reset();
+                loadSkills();
+            }
+        });
 }
 
 function deleteSkill(id) {
     if (!confirm('Are you sure you want to delete this skill?')) return;
-    
+
     fetch(`${API_BASE}/skills/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('skillStatus', data.message, data.success);
-        if (data.success) loadSkills();
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('skillStatus', data.message, data.success);
+            if (data.success) loadSkills();
+        });
 }
 
 function editSkill(id) {
@@ -253,7 +251,7 @@ function editSkill(id) {
                 const form = document.getElementById('skillForm');
                 const submitBtn = form.querySelector('button[type="submit"]');
                 submitBtn.innerHTML = '<i class="fas fa-save"></i> Update Skill';
-                submitBtn.onclick = function(e) {
+                submitBtn.onclick = function (e) {
                     e.preventDefault();
                     updateSkill(id);
                 };
@@ -267,30 +265,26 @@ function updateSkill(id) {
         name: document.getElementById('sName').value,
         level: parseInt(document.getElementById('sLevel').value)
     };
-    
+
     fetch(`${API_BASE}/skills/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('skillStatus', data.message, data.success);
-        if (data.success) {
-            document.getElementById('skillForm').reset();
-            // Reset button
-            const form = document.getElementById('skillForm');
-            const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Skill';
-            submitBtn.onclick = addSkill;
-            loadSkills();
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('skillStatus', data.message, data.success);
+            if (data.success) {
+                document.getElementById('skillForm').reset();
+                // Reset button
+                const form = document.getElementById('skillForm');
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Skill';
+                submitBtn.onclick = addSkill;
+                loadSkills();
+            }
+        });
 }
-
-// ============================================
-// PROJECTS CRUD
-// ============================================
 
 function loadProjects() {
     fetch(`${API_BASE}/projects`)
@@ -304,12 +298,12 @@ function loadProjects() {
 
 function renderProjects(projects) {
     const container = document.getElementById('projectsList');
-    
+
     if (projects.length === 0) {
         container.innerHTML = '<p style="color:#999; text-align:center; padding:20px;">No projects added yet</p>';
         return;
     }
-    
+
     container.innerHTML = projects.map(project => `
         <div class="item-card">
             <div class="item-info">
@@ -333,7 +327,7 @@ function renderProjects(projects) {
 
 function addProject(event) {
     event.preventDefault();
-    
+
     const data = {
         title: document.getElementById('projTitle').value,
         description: document.getElementById('projDescription').value,
@@ -341,34 +335,34 @@ function addProject(event) {
         image: document.getElementById('projImage').value || 'image/default.jpg',
         link: document.getElementById('projLink').value || '#'
     };
-    
+
     fetch(`${API_BASE}/projects`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('projectStatus', data.message, data.success);
-        if (data.success) {
-            document.getElementById('projectForm').reset();
-            loadProjects();
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('projectStatus', data.message, data.success);
+            if (data.success) {
+                document.getElementById('projectForm').reset();
+                loadProjects();
+            }
+        });
 }
 
 function deleteProject(id) {
     if (!confirm('Are you sure you want to delete this project?')) return;
-    
+
     fetch(`${API_BASE}/projects/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('projectStatus', data.message, data.success);
-        if (data.success) loadProjects();
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('projectStatus', data.message, data.success);
+            if (data.success) loadProjects();
+        });
 }
 
 function editProject(id) {
@@ -382,11 +376,11 @@ function editProject(id) {
                 document.getElementById('projTags').value = p.tags.join(', ');
                 document.getElementById('projImage').value = p.image;
                 document.getElementById('projLink').value = p.link;
-                
+
                 const form = document.getElementById('projectForm');
                 const submitBtn = form.querySelector('button[type="submit"]');
                 submitBtn.innerHTML = '<i class="fas fa-save"></i> Update Project';
-                submitBtn.onclick = function(e) {
+                submitBtn.onclick = function (e) {
                     e.preventDefault();
                     updateProject(id);
                 };
@@ -402,51 +396,48 @@ function updateProject(id) {
         image: document.getElementById('projImage').value,
         link: document.getElementById('projLink').value
     };
-    
+
     fetch(`${API_BASE}/projects/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('projectStatus', data.message, data.success);
-        if (data.success) {
-            document.getElementById('projectForm').reset();
-            const form = document.getElementById('projectForm');
-            const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Project';
-            submitBtn.onclick = addProject;
-            loadProjects();
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('projectStatus', data.message, data.success);
+            if (data.success) {
+                document.getElementById('projectForm').reset();
+                const form = document.getElementById('projectForm');
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Project';
+                submitBtn.onclick = addProject;
+                loadProjects();
+            }
+        });
 }
 
-// ============================================
-// MESSAGES CRUD
-// ============================================
 
 function loadMessages() {
     fetch(`${API_BASE}/contact/messages`, {
         headers: getHeaders()
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            renderMessages(data.data);
-            document.getElementById('messageCount').textContent = data.data.length;
-        }
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                renderMessages(data.data);
+                document.getElementById('messageCount').textContent = data.data.length;
+            }
+        });
 }
 
 function renderMessages(messages) {
     const container = document.getElementById('messagesList');
-    
+
     if (messages.length === 0) {
         container.innerHTML = '<p style="color:#999; text-align:center; padding:20px;">No messages yet</p>';
         return;
     }
-    
+
     container.innerHTML = messages.map(msg => `
         <div class="message-card">
             <div class="message-header">
@@ -468,28 +459,25 @@ function renderMessages(messages) {
 
 function deleteMessage(id) {
     if (!confirm('Are you sure you want to delete this message?')) return;
-    
+
     fetch(`${API_BASE}/contact/messages/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
     })
-    .then(res => res.json())
-    .then(data => {
-        showStatus('messageStatus', data.message, data.success);
-        if (data.success) loadMessages();
-    });
+        .then(res => res.json())
+        .then(data => {
+            showStatus('messageStatus', data.message, data.success);
+            if (data.success) loadMessages();
+        });
 }
 
-// ============================================
-// STATUS HELPER
-// ============================================
 
 function showStatus(elementId, message, success) {
     const element = document.getElementById(elementId);
     element.textContent = message;
     element.className = 'status-message ' + (success ? 'success' : 'error');
     element.style.display = 'block';
-    
+
     setTimeout(() => {
         element.style.display = 'none';
     }, 5000);
