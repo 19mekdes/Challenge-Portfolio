@@ -1,6 +1,5 @@
 const { getOne, query } = require('../config/database');
 
-
 async function getAbout(req, res) {
     try {
         const row = await getOne('SELECT * FROM about ORDER BY id LIMIT 1');

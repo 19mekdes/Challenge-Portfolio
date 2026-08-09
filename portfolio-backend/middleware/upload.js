@@ -113,7 +113,6 @@ const handleUploadError = (err, req, res, next) => {
     next();
 };
 
-
 // Delete file helper
 const deleteFile = (filePath) => {
     try {
