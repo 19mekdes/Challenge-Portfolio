@@ -1,7 +1,3 @@
-// ============================================
-// ROUTES/CONTACT.JS - Fixed Contact Routes
-// ============================================
-
 const express = require('express');
 const router = express.Router();
 const contactController = require('../controllers/contactController');
