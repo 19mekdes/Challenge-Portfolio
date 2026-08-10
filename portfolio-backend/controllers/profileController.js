@@ -47,8 +47,6 @@ async function getProfileById(req, res) {
     }
 }
 
-     // UPDATE PROFILE INFORMATION (Admin only)
-
 async function updateProfile(req, res) {
     try {
         const { name, title, bio, email, phone, location, github, linkedin, profileImage } = req.body;

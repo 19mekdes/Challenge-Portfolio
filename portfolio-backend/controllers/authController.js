@@ -7,7 +7,7 @@ let activeTokens = [];
 
 function login(req, res) {
     const { username, password } = req.body;
-    
+
     // Validate input
     if (!username || !password) {
         return res.status(400).json({
@@ -15,13 +15,13 @@ function login(req, res) {
             message: 'Please provide username and password'
         });
     }
-    
+
     // Check credentials
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
         // Generate simple token (in production, use JWT)
         const token = generateToken(username);
         activeTokens.push(token);
-        
+
         res.json({
             success: true,
             token: token,
@@ -41,10 +41,10 @@ function login(req, res) {
 
 function logout(req, res) {
     const token = req.headers.authorization;
-    
+
     // Remove token from active tokens
     activeTokens = activeTokens.filter(t => t !== token);
-    
+
     res.json({
         success: true,
         message: 'Logged out successfully!'
@@ -64,14 +64,14 @@ function checkAuth(req, res) {
 
 function changePassword(req, res) {
     const { currentPassword, newPassword } = req.body;
-    
+
     if (!currentPassword || !newPassword) {
         return res.status(400).json({
             success: false,
             message: 'Please provide current and new password'
         });
     }
-    
+
     // Check current password
     if (currentPassword !== ADMIN_PASSWORD) {
         return res.status(401).json({
@@ -79,11 +79,10 @@ function changePassword(req, res) {
             message: 'Current password is incorrect'
         });
     }
-    
-    // In a real app, you would update the password in the database
-    // For this demo, we'll just log it
+
+
     console.log('Password changed from:', currentPassword, 'to:', newPassword);
-    
+
     res.json({
         success: true,
         message: 'Password changed successfully!'

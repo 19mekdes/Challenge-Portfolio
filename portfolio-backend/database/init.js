@@ -1,7 +1,6 @@
 const { query, testConnection } = require('../config/database');
 const data = require('../models/data');
 
-
 async function createTables() {
     await query(`
         CREATE TABLE IF NOT EXISTS profile (
@@ -132,10 +131,6 @@ async function seedIfEmpty() {
         }
     }
 }
-
-// ============================================
-// INIT (called on server startup)
-// ============================================
 
 async function initDatabase() {
     const ok = await testConnection();
