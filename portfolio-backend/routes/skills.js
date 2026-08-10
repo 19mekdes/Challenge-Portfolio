@@ -1,7 +1,3 @@
-// ============================================
-// ROUTES/SKILLS.JS - Skills Routes
-// ============================================
-
 const express = require('express');
 const router = express.Router();
 const skillsController = require('../controllers/skillController');

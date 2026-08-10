@@ -1,26 +1,15 @@
-// ============================================
-// ROUTES/PROJECTS.JS - Updated with Upload
-// ============================================
-
 const express = require('express');
 const router = express.Router();
 const projectController = require('../controllers/projectController');
 const { isAuthenticated } = require('../middleware/auth');
 const { uploadSingle, handleUploadError, getFileInfo } = require('../middleware/upload');
 
-// ============================================
-// PUBLIC ROUTES
-// ============================================
 
 router.get('/', projectController.getProjects);
 router.get('/:id', projectController.getProjectById);
 router.get('/tag/:tag', projectController.getProjectsByTag);
 router.get('/category/:category', projectController.getProjectsByCategory);
 router.get('/search', projectController.searchProjects);
-
-// ============================================
-// ADMIN ROUTES
-// ============================================
 
 // POST - Create project with image
 router.post(
