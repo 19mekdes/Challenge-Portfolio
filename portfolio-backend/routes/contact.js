@@ -3,16 +3,9 @@ const router = express.Router();
 const contactController = require('../controllers/contactController');
 const { isAuthenticated } = require('../middleware/auth');
 
-// ============================================
-// PUBLIC ROUTES
-// ============================================
 
 // POST - Send contact message (Public)
 router.post('/send', contactController.sendMessage);
-
-// ============================================
-// ADMIN ROUTES (Protected)
-// ============================================
 
 // GET - Get all messages (Admin only)
 router.get('/messages', isAuthenticated, contactController.getMessages);
