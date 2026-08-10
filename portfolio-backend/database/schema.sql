@@ -431,21 +431,3 @@ SELECT get_dashboard_stats();
 DELETE FROM sessions 
 WHERE expires_at < (NOW() - INTERVAL '7 days');
 
--- Archive old messages (older than 1 year)
--- CREATE TABLE messages_archive (LIKE messages);
--- INSERT INTO messages_archive SELECT * FROM messages WHERE created_at < (NOW() - INTERVAL '1 year');
--- DELETE FROM messages WHERE created_at < (NOW() - INTERVAL '1 year');
-
--- ============================================
--- DATABASE USER (Create application user)
--- ============================================
-
--- Create application user (uncomment to use)
--- CREATE USER portfolio_user WITH PASSWORD 'portfolio_password';
--- GRANT CONNECT ON DATABASE portfolio_db TO portfolio_user;
--- GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO portfolio_user;
--- GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO portfolio_user;
-
--- ============================================
--- END OF SCHEMA
--- ============================================
