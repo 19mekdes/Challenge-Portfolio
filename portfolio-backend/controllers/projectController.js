@@ -8,7 +8,6 @@ function normalizeTags(tags) {
     return String(tags).split(',').map(t => t.trim()).filter(Boolean);
 }
 
-
 async function getProjects(req, res) {
     try {
         const rows = await getAll('SELECT * FROM projects ORDER BY id');

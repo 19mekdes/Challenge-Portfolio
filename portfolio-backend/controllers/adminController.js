@@ -1,6 +1,5 @@
 const { getAll, getOne, transaction } = require('../config/database');
 
-// Admin credentials (from .env)
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 

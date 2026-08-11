@@ -1,6 +1,5 @@
 const { getOne, query } = require('../config/database');
 
-// Map DB row (snake_case) to API shape (camelCase)
 function mapProfile(row) {
     if (!row) return null;
     return {
