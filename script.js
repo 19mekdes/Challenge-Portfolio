@@ -1,4 +1,3 @@
-
 const projects = [
     {
         id: 1,
@@ -393,9 +392,6 @@ function showStatus(message, color, element) {
     }
 }
 
-// ============================================
-// SMOOTH SCROLL FOR NAV LINKS
-// ============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();

@@ -471,7 +471,6 @@ function deleteMessage(id) {
         });
 }
 
-
 function showStatus(elementId, message, success) {
     const element = document.getElementById(elementId);
     element.textContent = message;
