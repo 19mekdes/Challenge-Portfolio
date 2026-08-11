@@ -3,7 +3,6 @@ const router = express.Router();
 const contactController = require('../controllers/contactController');
 const { isAuthenticated } = require('../middleware/auth');
 
-
 // POST - Send contact message (Public)
 router.post('/send', contactController.sendMessage);
 

@@ -1,7 +1,6 @@
 const { getAll, getOne, query } = require('../config/database');
 const data = require('../models/data');
 
-
 async function getSkills(req, res) {
     try {
         const rows = await getAll('SELECT * FROM skills ORDER BY id');
@@ -11,7 +10,6 @@ async function getSkills(req, res) {
         res.status(500).json({ success: false, message: 'Failed to fetch skills' });
     }
 }
-
 
 async function getSkillById(req, res) {
     try {
