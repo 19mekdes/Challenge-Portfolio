@@ -4,7 +4,6 @@ const projectController = require('../controllers/projectController');
 const { isAuthenticated } = require('../middleware/auth');
 const { uploadSingle, handleUploadError, getFileInfo } = require('../middleware/upload');
 
-
 router.get('/', projectController.getProjects);
 router.get('/:id', projectController.getProjectById);
 router.get('/tag/:tag', projectController.getProjectsByTag);

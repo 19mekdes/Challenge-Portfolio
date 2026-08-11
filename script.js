@@ -119,7 +119,6 @@ async function loadFromAPI() {
     setTimeout(animateSkillBars, 300);
 }
 
-// Escape HTML special characters in admin-provided text (prevents XSS)
 function escapeHTML(str) {
     return String(str == null ? '' : str)
         .replace(/&/g, '&amp;')

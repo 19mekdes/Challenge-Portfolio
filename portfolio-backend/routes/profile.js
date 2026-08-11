@@ -4,13 +4,11 @@ const profileController = require('../controllers/profileController');
 const { isAuthenticated } = require('../middleware/auth');
 const { uploadSingle, handleUploadError, getFileInfo } = require('../middleware/upload');
 
-
 // GET - Get profile
 router.get('/', profileController.getProfile);
 
 // GET - Get profile by ID
 router.get('/:id', profileController.getProfileById);
-
 
 // PUT - Update profile
 router.put('/', isAuthenticated, profileController.updateProfile);
