@@ -19,7 +19,6 @@ function escapeHtml(value) {
         .replace(/"/g, '&quot;');
 }
 
-// Map DB row to the API shape the admin panel expects (date/read)
 function mapMessage(row) {
     if (!row) return null;
     return {

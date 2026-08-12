@@ -1,7 +1,6 @@
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
-// In-memory token storage (for demo)
 let activeTokens = [];
 
 function login(req, res) {
