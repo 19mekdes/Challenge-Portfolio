@@ -54,7 +54,7 @@ router.post(
     }
 );
 
-// POST - Reset profile
+
 router.post('/reset', isAuthenticated, profileController.resetProfile);
 
 module.exports = router;
