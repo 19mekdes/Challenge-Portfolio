@@ -18,7 +18,6 @@ function mapProfile(row) {
     };
 }
 
-   // GET PROFILE INFORMATION (Public)
 
 async function getProfile(req, res) {
     try {

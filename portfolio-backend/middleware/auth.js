@@ -1,7 +1,6 @@
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
-// Simple admin authentication middleware
 function isAuthenticated(req, res, next) {
     // Get token from header
     const token = req.headers.authorization;

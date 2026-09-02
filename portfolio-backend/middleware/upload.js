@@ -140,10 +140,6 @@ const getFileInfo = (file) => {
     };
 };
 
-// ============================================
-// EXPORT
-// ============================================
-
 module.exports = {
     upload,
     uploadSingle,
