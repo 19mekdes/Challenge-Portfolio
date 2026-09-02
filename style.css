@@ -38,7 +38,6 @@ body {
     margin: 10px auto 0;
 }
 
-/* ===== BUTTONS ===== */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -120,7 +119,6 @@ body {
     cursor: pointer;
 }
 
-/* ===== HOME SECTION ===== */
 .home {
     padding: 120px 0 80px;
     min-height: 100vh;
