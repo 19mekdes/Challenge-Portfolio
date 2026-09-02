@@ -3,14 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// Import routes
 const contactRoutes = require('./routes/contact');
 const profileRoutes = require('./routes/profile');
 const aboutRoutes = require('./routes/about');
 const skillsRoutes = require('./routes/skills');
 const projectsRoutes = require('./routes/projects');
 const adminRoutes = require('./routes/admin');
-const authRoutes = require('./routes/auth');  // ← Added auth routes
+const authRoutes = require('./routes/auth');  
 
 // Import database initializer (creates tables + seeds defaults on startup)
 const { initDatabase } = require('./database/init');
