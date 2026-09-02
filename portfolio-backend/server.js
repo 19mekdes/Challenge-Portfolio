@@ -11,7 +11,6 @@ const projectsRoutes = require('./routes/projects');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');  
 
-// Import database initializer (creates tables + seeds defaults on startup)
 const { initDatabase } = require('./database/init');
 
 const app = express();
@@ -29,7 +28,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Frontend directory (project root — contains index.html, style.css, image/, etc.)
 const FRONTEND_DIR = path.join(__dirname, '..');
 
 // Serve images referenced by the portfolio (e.g. /image/Home.jpg)
@@ -38,7 +36,7 @@ app.use('/image', express.static(path.join(FRONTEND_DIR, 'image')));
 // Serve uploaded files (multer writes to public/uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
-// Request logging (optional)
+
 app.use((req, res, next) => {
     console.log(`📝 ${req.method} ${req.url}`);
     next();
