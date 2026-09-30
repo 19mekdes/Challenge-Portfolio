@@ -30,10 +30,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const FRONTEND_DIR = path.join(__dirname, '..');
 
-// Serve images referenced by the portfolio (e.g. /image/Home.jpg)
 app.use('/image', express.static(path.join(FRONTEND_DIR, 'image')));
 
-// Serve uploaded files (multer writes to public/uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
@@ -76,12 +74,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
 });
 
-// Admin panel (also serve /admin.html so relative "admin.html" links work)
 app.get(['/admin', '/admin.html'], (req, res) => {
     res.sendFile(path.join(FRONTEND_DIR, 'admin.html'));
 });
 
-// Frontend asset files (style.css, script.js, admin.css, admin.js)
 ['style.css', 'script.js', 'admin.css', 'admin.js'].forEach((asset) => {
     app.get(`/${asset}`, (req, res) => {
         res.sendFile(path.join(FRONTEND_DIR, asset));
@@ -158,7 +154,7 @@ app.listen(PORT, async () => {
     console.log(`🔐 Auth Endpoint: http://localhost:${PORT}/api/auth/login`);
     console.log(`📧 Email: ${process.env.EMAIL_USER || 'Not configured'}`);
     
-    // Initialize the PostgreSQL database (create tables + seed defaults)
+    
     const dbReady = await initDatabase();
     if (!dbReady) {
         console.log('⚠️  API will fail until the DB_* credentials in .env are fixed.');

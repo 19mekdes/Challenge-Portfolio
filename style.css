@@ -70,7 +70,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* ===== NAVIGATION ===== */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -176,7 +176,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== ABOUT SECTION ===== */
+
 .about {
     padding: 80px 0;
     background: #f9f9f9;
@@ -225,7 +225,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== SKILLS SECTION ===== */
+
 .skills-section {
     padding: 80px 0;
     background: #fff;
@@ -299,7 +299,7 @@ body {
     transition: 1s;
 }
 
-/* ===== PROJECTS SECTION ===== */
+
 .projects {
     padding: 80px 0;
     background: #f9f9f9;
@@ -370,7 +370,7 @@ body {
     color: #1d4ed8;
 }
 
-/* ===== CONTACT SECTION ===== */
+
 .contact {
     padding: 80px 0;
     background: #fff;
@@ -441,7 +441,6 @@ body {
     resize: vertical;
 }
 
-/* ===== FOOTER ===== */
 .footer {
     background: #000;
     color: #fff;
@@ -489,10 +488,10 @@ body {
     }
 }
 
-/* ===== MOBILE DEVICES (iPad, Tablets) ===== */
+
 @media (max-width: 768px) {
 
-    /* Navigation */
+    
     .menu-toggle {
         display: block;
     }
@@ -518,7 +517,7 @@ body {
         padding: 10px 0;
     }
 
-    /* Home Section */
+    
     .home-content {
         flex-direction: column-reverse;
         text-align: center;
@@ -553,7 +552,7 @@ body {
         height: 160px;
     }
 
-    /* About Section */
+    
     .about-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -594,13 +593,13 @@ body {
         font-size: 1.1rem;
     }
 
-    /* Projects Section */
+    
     .project-grid {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
 
-    /* Contact Section */
+    
     .contact-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -629,7 +628,7 @@ body {
     }
 }
 
-/* ===== SMALL PHONES (480px and below) ===== */
+
 @media (max-width: 480px) {
 
     /* General */
@@ -642,7 +641,7 @@ body {
         min-height: auto;
     }
 
-    /* Navigation */
+ 
     .logo {
         font-size: 1.2rem;
     }
@@ -683,7 +682,7 @@ body {
         height: 140px;
     }
 
-    /* About Section */
+   
     .about {
         padding: 50px 0;
     }

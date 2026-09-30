@@ -17,7 +17,7 @@ router.post(
     uploadSingle('image'),
     handleUploadError,
     (req, res, next) => {
-        // If image uploaded, add image path to body
+        
         if (req.file) {
             req.body.image = getFileInfo(req.file).url;
         }
@@ -26,7 +26,7 @@ router.post(
     projectController.createProject
 );
 
-// PUT - Update project with image
+
 router.put(
     '/:id',
     isAuthenticated,

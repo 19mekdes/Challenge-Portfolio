@@ -48,7 +48,7 @@ const API_BASE = window.location.protocol.startsWith('http')
     ? '/api'
     : 'http://localhost:5000/api';
 
-// Fallback skills used when the backend isn't reachable
+
 const FALLBACK_SKILLS = [
     { id: 1, category: "Frontend", name: "HTML", level: 90 },
     { id: 2, category: "Frontend", name: "CSS", level: 85 },
@@ -115,7 +115,7 @@ async function loadFromAPI() {
     renderSkills(skills);
     renderProjects(projects);
 
-    // Re-run the bar animation now that the skill bars exist
+    
     setTimeout(animateSkillBars, 300);
 }
 
@@ -128,7 +128,7 @@ function escapeHTML(str) {
         .replace(/'/g, '&#39;');
 }
 
-// Apply profile data to the home section, contact info and footer
+
 function applyProfile(profile) {
     if (!profile) return;
 
@@ -170,7 +170,7 @@ function applyProfile(profile) {
     }
 }
 
-// Apply about data to the about section
+
 function applyAbout(about) {
     if (!about) return;
 
@@ -190,7 +190,7 @@ function applyAbout(about) {
     }
 }
 
-// Render skills grouped by category (from the backend or fallback)
+
 function renderSkills(skillsData) {
     const container = document.querySelector('.skills-content');
     if (!container) return;
