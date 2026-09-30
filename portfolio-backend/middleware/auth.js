@@ -12,7 +12,7 @@ function isAuthenticated(req, res, next) {
         });
     }
     
-    // Check if token is valid (matches admin password for simplicity)
+    
     if (token === ADMIN_PASSWORD) {
         return next();
     }

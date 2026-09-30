@@ -59,7 +59,7 @@ const upload = multer({
 });
 
 
-// Single file upload
+
 const uploadSingle = (fieldName) => {
     return upload.single(fieldName);
 };
@@ -78,7 +78,7 @@ const uploadFields = (fields) => {
 
 const handleUploadError = (err, req, res, next) => {
     if (err instanceof multer.MulterError) {
-        // Multer-specific errors
+        
         if (err.code === 'FILE_TOO_LARGE') {
             return res.status(400).json({
                 success: false,
@@ -113,7 +113,7 @@ const handleUploadError = (err, req, res, next) => {
     next();
 };
 
-// Delete file helper
+
 const deleteFile = (filePath) => {
     try {
         if (fs.existsSync(filePath)) {
@@ -127,7 +127,7 @@ const deleteFile = (filePath) => {
     }
 };
 
-// Get file info helper
+
 const getFileInfo = (file) => {
     if (!file) return null;
     return {

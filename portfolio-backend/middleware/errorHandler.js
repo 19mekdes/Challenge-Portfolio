@@ -14,7 +14,7 @@ function errorHandler(err, req, res, next) {
     });
 }
 
-// Not found handler
+r
 function notFoundHandler(req, res) {
     res.status(404).json({
         success: false,
@@ -23,7 +23,6 @@ function notFoundHandler(req, res) {
     });
 }
 
-// Validation error handler
 function validationError(err, req, res, next) {
     if (err.name === 'ValidationError') {
         return res.status(400).json({
