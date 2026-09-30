@@ -10,7 +10,6 @@ router.get('/tag/:tag', projectController.getProjectsByTag);
 router.get('/category/:category', projectController.getProjectsByCategory);
 router.get('/search', projectController.searchProjects);
 
-// POST - Create project with image
 router.post(
     '/',
     isAuthenticated,

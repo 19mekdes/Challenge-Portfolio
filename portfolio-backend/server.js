@@ -17,14 +17,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-// Enable CORS
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Parse JSON
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -69,7 +68,6 @@ app.get('/api/health', (req, res) => {
 });
 
 
-// Home page
 app.get('/', (req, res) => {
     res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
 });
@@ -86,7 +84,7 @@ app.get(['/admin', '/admin.html'], (req, res) => {
 
 
 app.use((req, res, next) => {
-    // Check if requesting API
+    
     if (req.path.startsWith('/api/')) {
         return res.status(404).json({
             success: false,
@@ -97,7 +95,7 @@ app.use((req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
         return next();
     }
-    // Serve index.html for all other routes
+    
     res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
 });
 
