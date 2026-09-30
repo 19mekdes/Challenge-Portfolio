@@ -108,11 +108,11 @@ app.use((req, res) => {
     });
 });
 
-// Global Error Handler
+
 app.use((err, req, res, next) => {
     console.error('❌ Error:', err.stack);
     
-    // Multer errors
+    
     if (err.code === 'FILE_TOO_LARGE') {
         return res.status(400).json({
             success: false,
@@ -120,7 +120,7 @@ app.use((err, req, res, next) => {
         });
     }
     
-    // Validation errors
+
     if (err.name === 'ValidationError') {
         return res.status(400).json({
             success: false,
@@ -128,7 +128,7 @@ app.use((err, req, res, next) => {
         });
     }
     
-    // Database errors
+
     if (err.code === 'ER_DUP_ENTRY') {
         return res.status(409).json({
             success: false,
@@ -136,7 +136,7 @@ app.use((err, req, res, next) => {
         });
     }
     
-    // Default error
+
     res.status(500).json({
         success: false,
         message: process.env.NODE_ENV === 'production' 

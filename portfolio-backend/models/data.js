@@ -87,10 +87,10 @@ let projects = [
     }
 ];
 
-// ===== MESSAGES DATA =====
+
 let messages = [];
 
-// Export all data
+
 module.exports = {
     profile,
     about,

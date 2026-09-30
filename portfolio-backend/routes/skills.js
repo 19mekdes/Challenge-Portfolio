@@ -3,13 +3,13 @@ const router = express.Router();
 const skillsController = require('../controllers/skillController');
 const { isAuthenticated } = require('../middleware/auth');
 
-// GET - Get all skills (Public)
+
 router.get('/', skillsController.getSkills);
 
-// GET - Get skills by category
+
 router.get('/category/:category', skillsController.getSkillsByCategory);
 
-// POST - Create new skill (Admin only)
+
 router.post('/', isAuthenticated, skillsController.createSkill);
 
 // PUT - Update skill (Admin only)

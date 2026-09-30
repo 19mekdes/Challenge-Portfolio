@@ -33,7 +33,7 @@ router.post(
             
             const fileInfo = getFileInfo(req.file);
             
-            // Update profile image path
+            
             const imagePath = fileInfo.url;
             
             res.json({
