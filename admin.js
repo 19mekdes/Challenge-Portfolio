@@ -57,13 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function showSection(sectionName) {
-    // Hide all sections
+   
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
 
-    // Show selected section
+ 
     document.getElementById(sectionName + 'Section').classList.add('active');
 
-    // Update sidebar buttons
     document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.sidebar-btn[data-section="${sectionName}"]`).classList.add('active');
 }

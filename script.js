@@ -93,7 +93,7 @@ function renderProjects(projectData) {
 }
 
 async function loadFromAPI() {
-    // Use allSettled so one failing endpoint doesn't discard the other sections
+    
     const results = await Promise.allSettled([
         fetch(`${API_BASE}/profile`),
         fetch(`${API_BASE}/about`),

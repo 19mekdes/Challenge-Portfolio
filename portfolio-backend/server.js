@@ -100,7 +100,7 @@ app.use((req, res, next) => {
 });
 
 
-// 404 Handler
+
 app.use((req, res) => {
     res.status(404).json({
         success: false,

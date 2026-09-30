@@ -1,5 +1,5 @@
 :root {
-    /* Colors */
+    
     --primary: #4f46e5;
     --primary-dark: #4338ca;
     --primary-light: #818cf8;
@@ -33,7 +33,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== RESET ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ body {
     color: var(--text-primary);
 }
 
-/* ===== LOGIN PAGE ===== */
+
 .login-page {
     min-height: 100vh;
     display: flex;
@@ -59,7 +59,7 @@ body {
     overflow: hidden;
 }
 
-/* Animated background */
+
 .login-page::before {
     content: '';
     position: absolute;
@@ -170,7 +170,7 @@ body {
     transform: translateY(0);
 }
 
-/* ===== ADMIN NAV ===== */
+
 .admin-nav {
     background: var(--bg-nav);
     color: #fff;
@@ -289,7 +289,7 @@ body {
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
 
-/* ===== ADMIN LAYOUT ===== */
+
 .admin-container {
     max-width: 1400px;
     margin: 90px auto 30px;
@@ -298,7 +298,7 @@ body {
     gap: 30px;
 }
 
-/* ===== SIDEBAR ===== */
+
 .sidebar {
     width: 280px;
     flex-shrink: 0;
